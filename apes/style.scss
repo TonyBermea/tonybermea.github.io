@@ -1,0 +1,66 @@
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+
+$rubik-beastly: "Rubik Beastly", cursive;
+$source-code-pro: "Space Mono", monospace;
+
+.card {
+    margin-bottom: 1.5em;
+}
+
+.brn {
+    margin-left: 0.5em;
+    font-family: $rubik-beastly !important;
+}
+
+.row {
+    margin: auto;
+}
+
+.vba {
+    font-family: $rubik-beastly !important;
+    color: rgb(46, 46, 46);
+}
+
+body {
+    font-family: $source-code-pro;
+}
+
+.brn {
+    background: url(https://media.giphy.com/media/hPlsN9Z6JNF4s/giphy.gif);
+    background-size: 40%;
+    background-position: 50% 50%;
+    -webkit-background-clip: text;
+    color: rgba(0, 0, 0, 0.08);
+    animation: zoomout 10s ease 500ms forwards;
+}
+
+@keyframes zoomout {
+    from {
+        background-size: 40%;
+    }
+    to {
+        background-size: 10%;
+    }
+}
+
+.card:hover {
+    box-shadow: 10px 10px 10px rgb(63, 94, 251);
+    transform: skewX(0.5deg);
+}
+
+.btn:hover {
+    box-shadow: 8px 8px 8px rgb(251, 63, 188);
+    transform: skew(2deg);
+}
+
+@media only screen and (min-width: 600px) {
+    .jumbotron {
+        height: 100vh;
+    }
+}
+
+
