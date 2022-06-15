@@ -1,10 +1,10 @@
-body {
+#hide {
 	margin: 0 0 0 0;
 	background-color: #fff;
 	cursor: url(bigMouse.png), auto;
 }
 
-body a {
+#hide a {
 	cursor: url(bigPointer.png), auto;
 }
 
