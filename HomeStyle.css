@@ -58,11 +58,11 @@ p a:hover {
 	text-decoration: none;
 }
 
-body {
+#hide {
 	cursor: url(bigMouse.png), auto;
 }
 
-body a {
+#hide a {
 	cursor: url(bigPointer.png), auto;
 }
 
