@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <title>Napkin</title>
+    <link rel="shortcut icon" href="../assets/images/unnamed.png" />
+    <meta name="description" content="Napkin studio">
+    <link rel="stylesheet" href="../assets/css/mainNPKN-v=1.css">
+    <style id="base-font-sizes">
+
+    </style>
+
+    <script>
+        var FA = {}; // Global namespace
+
+        function resizeFonts() {
+            var maxDesktopWindowWidth = 2400,
+                minDesktopWindowWidth = 769,
+                minMobileWidth = 320;
+
+            var windowWidth = window.innerWidth;
+
+            var range = maxDesktopWindowWidth - minDesktopWindowWidth;
+
+            var mobileRange = minDesktopWindowWidth - 1 - minMobileWidth;
+
+            var proportion = {
+                desktop: 1,
+                mobile: 1
+            };
+
+            proportion['desktop'] = (windowWidth - minDesktopWindowWidth) / range;
+            proportion['mobile'] = (windowWidth - minMobileWidth) / mobileRange;
+
+            console.log('window proportion', proportion);
+
+            if (proportion['desktop'] > 1) {
+                proportion['desktop'] = 1;
+            }
+            if (proportion['mobile'] < 0) {
+                proportion['mobile'] = 0;
+            }
+
+            var baseFontSize = 14;
+
+            base = {
+                mobile: {
+                    min: 24,
+                    max: 36
+                },
+                desktop: {
+                    min: 24,
+                    max: 36
+                }
+            }
+
+            var selector = windowWidth >= minDesktopWindowWidth ? 'desktop' : 'mobile';
+
+            baseFontSize = proportion[selector] * (base[selector].max - base[selector].min) + base[selector].min;
+
+            var styleContent = `
+        html, body {
+          font-size : ${baseFontSize}px;
+        }
+        `;
+
+            document.getElementById('base-font-sizes').innerHTML = styleContent;
+        }
+        resizeFonts();
+    </script>
+    <script src="../ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+    <script>
+        $(window).on('resize.resizeFonts orientationchange.resizeFonts', resizeFonts);
+    </script>
+
+</head>
+
+<body class="theme-light page-home" data-animation-style="default">
+    <div class="container">
+
+        <header class="row page-header body-text">
+
+            <div class="page-description col-md-3 offset-md-right-1 pad-all">
+                <a href="../index.html"><img src="../assets/images/Napkin%20(Done).png" width="135" height="28px"></a>
+                <p>We are a visual communication studio based in Coahuila. We are enthusiasts of functionality and innovation in aesthetics.</p>
+            </div>
+
+            <nav class="site-nav col-md-2 pad-all show-md">
+                <ul>
+                    <li><a href="../index.html"><span class="h3"></span></a></li>
+                    
+                    <li class=""><a href="PLVS VLTRA.html#contact" class="underline-link button next scrolly h3">Get In Touch</a></li>
+
+                </ul>
+            </nav>
+
+        </header>
+    
+        <main id="main">
+
+                <div class="row">
+                        <div class="responsive">
+                          <img src="../content/1-home/Plus%20Ultra%20logo%20on%20W.png" class="img-responsive" style="width:100%" alt="Image">
+                        </div>
+            
+                        <section class="strip-section-header row">
+                                <div class="col-3 col-md-2 pad-all section-id"><span class="h2">«Further Beyond»</span></div>
+                                <div class="col-6 col-md-4 pad-all pad-md-left-none section-description body-text"><p>This motto was used to challenge the ancient warning from Greek mythology that states two pillars were set at the Strait of Gibraltar, which were believed to mark the edge of the world, the last boundary the Mediterranean sailors could reach.</p></div>
+                                
+                            </section>
+                        
+                            <div class="row">
+                                    <div class="responsive">
+                                      <img src="../content/1-home/Resume1(1).jpg" class="img-responsive" style="width:100%" alt="Image">
+                                    </div>
+
+           
+    
+    <div class="row">
+            <div class="responsive">
+              <img src="../content/1-home/PV-Hoja-Mockup.jpg" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+
+            <div class="row">
+                <div class="responsive">
+                  <img src="../content/1-home/PV-BC-MU.jpg" class="img-responsive" style="width:100%" alt="Image">
+                </div>
+
+    </main>
+
+	<footer class="footer body-text">
+
+		<section id="contact"></section>
+		<div class="row strip-section-header ">
+			<div class="col-3 col-md-2 pad-all section-id"><span class="h2">Contact</span></div>
+		</div>
+		</section>
+
+</div>
+
+<div class="row location-and-copyright">
+
+	<div class="col-md-2 pad-all">
+		<div class="adr">
+			<div class="fn org">Napkin Studio</div>
+			<div class="fn org">Saltillo,</div>
+			<div class="fn org">Coahuila,</div>
+			<div class="fn org">México.</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-2 pad-all pad-md-left-none body-text">
+
+		<a class="underline-link" href="https://www.instagram.com/npkn.studio/?hl=es-la" target="_blank">Instagram</a><br/>
+		<a class="underline-link" href="https://www.facebook.com/NPKNstudio/" target="_blank">Facebook</a><br/>
+	</div>
+	<div class="col-md-2 pad-all pad-md-left-none body-text">
+		<a href="tel:+52.844.461.3665" class="tel">+52 844.461.3665</a><br/>
+		<a href="mailto:hello@npknstudio.com" class="email underline-link">hello@npknstudio.com</a>
+		<div>
+			<!--&mdash;--><br/></div>
+
+
+            <div>Copyright &copy; 2018 Napkin Studio.</div>
+
+	</div>
+
+</div>
+
+</footer>
+
+</div>
+
+<script src="../cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/ScrollToPlugin.min.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/ColorPropsPlugin.min.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+
+<script src="../assets/js/main2-v=1.js"></script>
+<script src="../assets/js/gradient-v=1.js"></script>
+<script src="../assets/js/default-animations-v=1.js"></script>
+<script src="../assets/js/interaction-animations-v=1.js"></script>
+<script src="../assets/js/work-landing-animations-v=1.js"></script>
+<script>
+	$(function() {
+		$('.page-header').css('opacity', 1);
+		$('body').css('opacity', 1);
+	});
+</script>
+</body>
+
+</html> 
