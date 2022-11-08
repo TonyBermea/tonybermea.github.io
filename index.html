@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title>Tony Bermea</title>
+	<title>tb.dev</title>
 	<meta name="viewport"
 		content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, height=device-height, target-densitydpi=device-dpi, user-scalable=yes">
 	<meta charset="utf-8">
@@ -11,22 +11,7 @@
 	<link rel="icon" href="Favicon.html" type="image/favicon">
 
 	<link rel="stylesheet" href="HomeStyle.css">
-	<link rel="icon" href="icon.png">
-	<script src="../../code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="../../code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-		$(function () {
-			$("#container").resizable({
-				handles: 'w',
-				start: function () {
-					$("iframe").css('pointer-events', 'none');
-				},
-				stop: function () {
-					$("iframe").css('pointer-events', 'auto');
-				}
-			});
-		});
-	</script>
+	<link rel="icon" type="image/x-icon" href="icon.png">
 </head>
 
 <body>
@@ -34,30 +19,42 @@
 		<div id="left"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
-		<h1>Hi, I&rsquo;m <a href="index.html">Tony Bermea</a></h1>
-		<p>I am a creative digital designer and web developer based in Vancouver, BC.</p>
-		<br>
-		<p> I specialise in creating interactive experiences
-			and user-friendly interfaces whilst maintaining
-			semantic, clean markup and SEO friendly code.</p>
-		<br>
-		<p>I am the co-founder of</p>
-		<p><a href="https://npknstudio.com/" target="iframe_a">Napkin Studio</a>, based in the North of Mexico,
-			where I gained most of my experience in the field of brand design and web development.</p>
-		<br>
-		<p>I earned a Web & Mobile Development diploma at CICCC, where I learned and worked building responsive web
-			applications,
-			client and server side, using mainly JavaScript frameworks such as React to build this CRUD (Create, Read,
-			Update & Delete)
-			<a href="https://task-manager-cicc.netlify.app/" target="iframe_a"> Task Manager App</a>
-			and this<a href="https://vanshoes.netlify.app/" target="iframe_a"> E-commerce</a> among other creative
-			projects implementing different frameworks and technologies as I did with
-			<a href="./apes/main.html" target="iframe_a">this apes</a>.
-		</p>
-		<br>
-		<p> My resume is available <a href="Resume2022.pdf" target="iframe_a">here</a></p>
-		<p> and please drop me a line at <a href="mailto:hello@tonybermea.dev" target="blank">hello@tonybermea.dev</a>
-		</p>
+		<h1>Hi, I&rsquo;m <a href="index.html">Tony Bermea</a>, a creative <span class="type"></span></h1>
+
+		<div class="description">
+			<p> I specialize in creating interactive experiences
+				and user-friendly interfaces whilst maintaining
+				semantic, clean markup and SEO friendly code.</p>
+			<br>
+			<p>I was the co-founder of</p>
+			<p><a href="./npknstudio/index.html" target="iframe_a">Napkin Studio</a>, based in the North of Mexico,
+				where I gained most of my experience in the field of brand and web design, as well as I took my first
+				steps in
+				web development.</p>
+			<br>
+			<p>I recently earned a Web & Mobile Development diploma at <a href="https://ciccc.ca/"
+					target="_blank">CICCC</a>, where I
+				learned and worked building
+				responsive web
+				applications, client and server side, using mainly JavaScript frameworks such as React to build CRUD
+				(Create,
+				Read,Update & Delete) as the following
+				<a href="https://task-manager-cicc.netlify.app/" target="iframe_a"> Task Manager App</a>
+				and this<a href="https://vanshoes.netlify.app/" target="iframe_a"> E-commerce</a> among other creative
+				projects implementing different <a
+					href="https://www.figma.com/proto/NNTAkJRLTNl12H3izcBWml/Wireframe?node-id=93%3A233&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=93%3A233&show-proto-sidebar=1"
+					target="_blank">prototypes</a>
+				and frameworks and technologies as I did with
+				<a href="./apes/main.html" target="iframe_a">this apes</a>.<br><br>
+				I'm currently working on a new collaborative working space for local creatives called <a
+					href="./Sugary/index.html" target="iframe_a">Sugary</a>
+			</p>
+			<br>
+			<p> My resume is available <a href="Resume2022.pdf" target="iframe_a">here</a></p>
+			<p> and please drop me a line at <a href="mailto:hello@tonybermea.dev"
+					target="blank">hello@tonybermea.dev</a>
+			</p>
+		</div>
 		<div id="marginBottom"></div>
 
 		<div id="container">
@@ -83,6 +80,23 @@
 		<p id="bttn">Copyright &copy; 2022</p>
 		</div>
 	</footer>
+
+	<script src="typed.js"></script>
+	<script>
+		var typed = new Typed('.type', {
+			strings: [
+				'Front-end Developer',
+				'Graphic Designer',
+				'Problem Solver',
+				'Skateboarder',
+				'Thinker'
+			],
+			typeSpeed: 60,
+			backSpeed: 80,
+			backDelay: 1000,
+			loop: true,
+		});
+	</script>
 
 </body>
 

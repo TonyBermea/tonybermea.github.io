@@ -2,58 +2,13 @@
 
 <head>
 	<link rel="stylesheet" href="MeStyle.css">
-	<script src="../../ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-	<script src="../../cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body>
 	<div id="container">
 		<img src="PhotoOfMe.jpg">
 	</div>
-	<script>
-		$(document).ready(function () {
-			$('.a').each(animateDiv);
-		});
 
-		function makeNewPosition() {
-
-			// Get viewport dimensions (remove the dimension of the div)
-			var h = $(window).height() - 200;
-			var w = $(window).width() - 200;
-
-			var nh = Math.floor(Math.random() * h);
-			var nw = Math.floor(Math.random() * w);
-
-			return [nh, nw];
-		}
-
-		function animateDiv() {
-			var el = $(this);
-			var newq = makeNewPosition();
-			var oldq = $(el).offset();
-			var speed = calcSpeed([oldq.top, oldq.left], newq);
-
-			$(el).animate({ top: newq[0], left: newq[1] }, speed, function () {
-				animateDiv.apply(this);
-			});
-		};
-
-
-		function calcSpeed(prev, next) {
-
-			var x = Math.abs(prev[1] - next[1]);
-			var y = Math.abs(prev[0] - next[0]);
-
-			var greatest = x > y ? x : y;
-
-			var speedModifier = .05;
-
-			var speed = Math.ceil(greatest / speedModifier);
-
-			return speed;
-
-		}
-	</script>
 
 	<div class='a' style="left:10px; top:190px">H</div>
 	<div class='a' style="left:140px; top:190px">O</div>
