@@ -205,7 +205,18 @@ footer {
   }
 
   #bttn {
-    position: fixed;
-    margin-top: 6em;
+    padding-top: 50px;
+  }
+
+  .tb {
+    padding: 30px 0px 30px 0px;
+  }
+
+  .inf {
+    padding-bottom: 30px;
+  }
+
+  .lst {
+    padding-top: 0%;
   }
 }
