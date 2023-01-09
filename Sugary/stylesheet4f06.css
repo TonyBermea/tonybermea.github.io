@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: 'arialmtstd-light';
     src: url('type/arialmtstd-light.woff') format('woff'); 
 
@@ -17,16 +17,19 @@
     src: url('type/arialmtstd-medium.woff') format('woff');   
 
 }
+*/
+
 
 html {
   height: 100%;
   box-sizing: border-box;
 }
 
+font-family: Arial, Helvetica, sans-serif;
+
 *,
 *:before,
 *:after {
-  font-family: Arial, Helvetica, sans-serif;
   box-sizing: inherit;
 }
 
