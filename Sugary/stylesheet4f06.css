@@ -26,6 +26,7 @@ html {
 *,
 *:before,
 *:after {
+  font-family: Arial, Helvetica, sans-serif;
   box-sizing: inherit;
 }
 
