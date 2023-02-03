@@ -1,23 +1,23 @@
-/* @font-face {
-    font-family: 'arialmtstd-light';
-    src: url('type/arialmtstd-light.woff') format('woff'); 
+@font-face {
+    font-family: 'Graphik-Regular';
+    src: url('type/Graphik-Regular.woff') format('woff'); 
 
 
 }
 
 @font-face {
-    font-family:'arialmtstd-black';
-    src: url('type/arialmtstd-black.woff') format('woff');
+    font-family:'Graphik-Medium';
+    src: url('type/Graphik-Medium.otf') format('woff');
     
 }
 
 @font-face {
     
-    font-family:'arialmtstd-medium';
-    src: url('type/arialmtstd-medium.woff') format('woff');   
+    font-family:'Graphik-Semibold';
+    src: url('type/Graphik-Semibold.otf') format('woff');   
 
 }
-*/
+
 
 
 html {
@@ -69,7 +69,7 @@ a:hover {
 
 
 .menu {
-  font-family: 'arialmtstd-light', sans-serif;
+  font-family: 'Graphik-Regular', sans-serif;
   letter-spacing: -2px;
   font-size: 30px;
   right: 30px;
