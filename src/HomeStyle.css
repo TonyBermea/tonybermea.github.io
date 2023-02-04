@@ -59,11 +59,11 @@ p a:hover {
 }
 
 #hide {
-  cursor: url(bigMouse.png), auto;
+  cursor: url(/Assets/bigMouse.png), auto;
 }
 
 #hide a {
-  cursor: url(bigPointer.png), auto;
+  cursor: url(/Assets/bigPointer.png), auto;
 }
 
 ul {
