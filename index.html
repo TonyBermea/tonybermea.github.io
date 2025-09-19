@@ -22,9 +22,16 @@
         rel="stylesheet" />
     <style>
         /* Hide portrait image in mobile landscape orientation */
-        @media screen and (max-width: 768px) and (orientation: landscape) {
-            .portrait-container {
-                display: none !important;
+        @media screen and (max-width: 896px) and (orientation: landscape) and (max-height: 500px) {
+            div.portrait-container.fixed {
+                display: none;
+            }
+        }
+        
+        /* Additional fallback for smaller landscape screens */
+        @media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 430px) {
+            div.portrait-container.fixed {
+                display: none;
             }
         }
     </style>
