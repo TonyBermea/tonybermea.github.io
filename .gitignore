@@ -1,1 +1,5 @@
+# Domain related
 CNAME
+
+# Ignore all .vscode configs
+.vscode/
