@@ -1,6 +1,8 @@
 # Domain related
 CNAME
 
+# README.md for AI Agents
+
 # Ignore all .vscode configs
 .vscode/
 
