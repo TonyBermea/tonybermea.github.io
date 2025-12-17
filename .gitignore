@@ -8,3 +8,4 @@ CNAME
 
 # Ignore all AI Agent.md files
 AGENTS.md
+node_modules
