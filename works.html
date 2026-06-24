@@ -56,6 +56,16 @@
       justify-content: center !important;
     }
 
+    /* Auto-hide the fixed header when scrolling down */
+    header {
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+
+    header.nav-hidden {
+      transform: translateY(-100%);
+    }
+
     /* ===== Works: editorial split-preview gallery ===== */
     .works {
       max-width: 72rem;
@@ -563,8 +573,9 @@
               data-img="images/Project_1.png">
               <span class="work-line">
                 <span class="work-no">No.01</span>
-                <span class="work-title">Coffee Cupping (Leveling Matrix)</span>
-                <span class="work-role">Web App</span>
+                <span class="work-title">Coffee Cupping</span>
+                <span class="work-role">Leveling Matrix</span>
+
                 <span class="work-toggle" aria-hidden="true"></span>
               </span>
               <span class="work-thumb" style="background-image: url('images/Project_1.png');"></span>
@@ -572,14 +583,25 @@
             <div class="work-case" id="case-01">
               <div class="case-inner">
                 <div class="case-pad">
-                  <p class="case-meta">Web App · <span class="case-year">[year]</span></p>
-                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Coffee Cupping is and your role.]</p>
+                  <p class="case-meta">Web App · <span class="case-year">2025</span></p>
+                  <p class="case-lead">A data-dense comparison dashboard for a specialty-coffee roaster: it scores and
+                    compares green-coffee batches across weighted criteria in one unified view. The domain is specialty
+                    coffee — the engineering is bid leveling.</p>
                   <h3 class="case-h">The brief</h3>
-                  <p>[What the client or problem needed.]</p>
+                  <p>Give the roaster a single screen to evaluate multiple coffee candidates across many scored
+                    attributes, surfacing quality outliers and pricing anomalies at a glance — the same core UI problem
+                    behind scope comparison and vendor qualification.</p>
                   <h3 class="case-h">Approach</h3>
-                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <p>A scrollable CSS-Grid matrix with sticky headers maps 10 scored attributes across 5 candidates. An
+                    interpolated color engine conditionally formats every cell — weak scores in red, exceptional ones in
+                    green, cost anomalies on a separate purple scale. A one-click "level to baseline" toggle recomputes
+                    each cell as a signed deviation from its row average, with animated transitions and a diverging
+                    palette. A shared hover state cross-links the matrix to a price-vs-quality scatter and a morphing
+                    radar profile, so hovering one candidate lights up all three panels at once.</p>
                   <h3 class="case-h">Outcome</h3>
-                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <p>A production-grade, linked decision-support tool — hand-built SVG with no charting dependency, a
+                    decoupled color-scale and data layer, full light/dark theming with no-flash init, and reduced-motion
+                    support. Built with React 18, Vite and Motion; 92 KB gzipped.</p>
                   <a class="case-visit" href="https://coffeecupping.netlify.app" target="_blank" rel="noopener">Visit
                     live site ↗</a>
                 </div>
@@ -593,7 +615,7 @@
               <span class="work-line">
                 <span class="work-no">No.02</span>
                 <span class="work-title">NPKN Studio</span>
-                <span class="work-role">Studio Identity</span>
+                <span class="work-role">Studio Website</span>
                 <span class="work-toggle" aria-hidden="true"></span>
               </span>
               <span class="work-thumb" style="background-image: url('images/Project_2.png');"></span>
@@ -601,17 +623,18 @@
             <div class="work-case" id="case-02">
               <div class="case-inner">
                 <div class="case-pad">
-                  <p class="case-meta">Studio Identity · <span class="case-year">[year]</span></p>
-                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what NPKN Studio is and your role.]</p>
+                  <p class="case-meta">Brand / Shop · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Sugary is and your role.]</p>
                   <h3 class="case-h">The brief</h3>
                   <p>[What the client or problem needed.]</p>
                   <h3 class="case-h">Approach</h3>
                   <p>[What you designed &amp; built — the key decisions.]</p>
                   <h3 class="case-h">Outcome</h3>
                   <p>[The result — what shipped, impact, what you'd highlight.]</p>
-                  <a class="case-visit" href="https://luxury-granita-71ba5b.netlify.app" target="_blank"
+                  <a class="case-visit" href="https://celebrated-lolly-eb3fc5.netlify.app" target="_blank"
                     rel="noopener">Visit live site ↗</a>
                 </div>
+
               </div>
             </div>
           </div>
@@ -622,7 +645,7 @@
               <span class="work-line">
                 <span class="work-no">No.03</span>
                 <span class="work-title">Elevé</span>
-                <span class="work-role">Branding</span>
+                <span class="work-role">eCommerce</span>
                 <span class="work-toggle" aria-hidden="true"></span>
               </span>
               <span class="work-thumb" style="background-image: url('images/Project_3.png');"></span>
@@ -630,15 +653,20 @@
             <div class="work-case" id="case-03">
               <div class="case-inner">
                 <div class="case-pad">
-                  <p class="case-meta">Branding · <span class="case-year">[year]</span></p>
-                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Elevé is and your role.]</p>
+                  <p class="case-meta">eCommerce · <span class="case-year">2024</span></p>
+                  <p class="case-lead">A streetwear eCommerce storefront with a bold-but-minimal aesthetic — oversized
+                    type and full-bleed product imagery carried by generous negative space.</p>
                   <h3 class="case-h">The brief</h3>
-                  <p>[What the client or problem needed.]</p>
+                  <p>A direct-to-consumer streetwear label needed a shop that felt as considered as the drops
+                    themselves: high-impact and distinctive, yet clean, fast and effortless to browse.</p>
                   <h3 class="case-h">Approach</h3>
-                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <p>A responsive product grid with a strong typographic hierarchy and a restrained, near-monochrome
+                    palette lets the garments lead. Collection filtering, quick-add, and a slide-in cart keep the path
+                    to checkout short, while optimized imagery and lazy loading keep it quick on mobile.</p>
                   <h3 class="case-h">Outcome</h3>
-                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
-                  <a class="case-visit" href="https://incomparable-pavlova-a2cde8.netlify.app" target="_blank"
+                  <p>A storefront where the design steps back and the product steps forward — a bold first impression
+                    with a frictionless route to purchase.</p>
+                  <a class="case-visit" href="https://luxury-granita-71ba5b.netlify.app" target="_blank"
                     rel="noopener">Visit live site ↗</a>
                 </div>
               </div>
@@ -651,7 +679,7 @@
               <span class="work-line">
                 <span class="work-no">No.04</span>
                 <span class="work-title">Soul Mag</span>
-                <span class="work-role">Editorial</span>
+                <span class="work-role">UI / Editorial</span>
                 <span class="work-toggle" aria-hidden="true"></span>
               </span>
               <span class="work-thumb" style="background-image: url('images/Project_4.png');"></span>
@@ -659,15 +687,21 @@
             <div class="work-case" id="case-04">
               <div class="case-inner">
                 <div class="case-pad">
-                  <p class="case-meta">Editorial · <span class="case-year">[year]</span></p>
-                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Soul Mag is and your role.]</p>
+                  <p class="case-meta">Editorial · <span class="case-year">2024</span></p>
+                  <p class="case-lead">A concept for the landing page of an online magazine, built around a dynamic,
+                    editorial layout — a modular grid that reflows around the day's featured stories rather than a fixed
+                    template.</p>
                   <h3 class="case-h">The brief</h3>
-                  <p>[What the client or problem needed?.]</p>
+                  <p>Explore how a magazine homepage could feel alive and print-like: confident hierarchy, expressive
+                    typography, and a composition that adapts to whatever the lead stories are.</p>
                   <h3 class="case-h">Approach</h3>
-                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <p>An asymmetric, magazine-style grid pairs large display type with a serif reading face, while
+                    scroll-reveal and subtle hover motion give the page rhythm. It reflows cleanly from multi-column
+                    spreads on desktop to a single, readable column on mobile.</p>
                   <h3 class="case-h">Outcome</h3>
-                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
-                  <a class="case-visit" href="https://silly-faloodeh-0d1ed4.netlify.app" target="_blank"
+                  <p>A flexible editorial layout that bends to the content instead of the other way around — visually
+                    striking without sacrificing readability.</p>
+                  <a class="case-visit" href="https://incomparable-pavlova-a2cde8.netlify.app" target="_blank"
                     rel="noopener">Visit live site ↗</a>
                 </div>
               </div>
@@ -688,15 +722,21 @@
             <div class="work-case" id="case-05">
               <div class="case-inner">
                 <div class="case-pad">
-                  <p class="case-meta">Web Design · <span class="case-year">[year]</span></p>
-                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Pixel Vault is and your role.]</p>
+                  <p class="case-meta">NFT Platform · <span class="case-year">2023</span></p>
+                  <p class="case-lead">The interface for an NFT platform — a gallery-first product where the artwork
+                    leads and the on-chain machinery stays quietly in the background.</p>
                   <h3 class="case-h">The brief</h3>
-                  <p>[What the client or problem needed.]</p>
+                  <p>Make minting, browsing and collecting feel approachable: a marketplace that reads like a gallery
+                    rather than a trading terminal.</p>
                   <h3 class="case-h">Approach</h3>
-                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <p>A visual-first collection grid and focused artwork detail views put the work center-stage.
+                    Wallet-connect, mint and bid flows are reduced to a few clear steps, with live status — price,
+                    edition, owner — surfaced without clutter, all on a dark, high-contrast theme that lets the art pop.
+                  </p>
                   <h3 class="case-h">Outcome</h3>
-                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
-                  <a class="case-visit" href="https://phenomenal-custard-0bd4af.netlify.app" target="_blank"
+                  <p>A clean, confidence-building marketplace UI that foregrounds the art and makes the web3 steps feel
+                    routine.</p>
+                  <a class="case-visit" href="https://silly-faloodeh-0d1ed4.netlify.app" target="_blank"
                     rel="noopener">Visit live site ↗</a>
                 </div>
               </div>
@@ -709,7 +749,7 @@
               <span class="work-line">
                 <span class="work-no">No.06</span>
                 <span class="work-title">Sugary</span>
-                <span class="work-role">Brand / Shop</span>
+                <span class="work-role">Studio</span>
                 <span class="work-toggle" aria-hidden="true"></span>
               </span>
               <span class="work-thumb" style="background-image: url('images/Project_6.png');"></span>
@@ -877,6 +917,30 @@
           if (willOpen) show(trigger.getAttribute('data-img'));
         });
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      var header = document.querySelector('header');
+      if (!header) return;
+      var lastY = window.pageYOffset || 0;
+      var ticking = false;
+      function update() {
+        var y = window.pageYOffset || 0;
+        if (y > lastY && y > 90) {
+          header.classList.add('nav-hidden');
+        } else {
+          header.classList.remove('nav-hidden');
+        }
+        lastY = y;
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
     })();
   </script>
 </body>
