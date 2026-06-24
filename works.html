@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preload" href="_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin=""
+    type="font/woff2" />
+  <link rel="stylesheet" href="_next/static/css/efe24a2c66697c5f.css" data-precedence="next" />
+
+
+
+
+
+
+  <meta name="next-size-adjust" content="" />
+  <title>Tony Bermea - Experience Engineer</title>
+  <meta name="description" content="Digital creator and software consultant specialized in human-driven projects" />
+  <meta name="generator" content="v0.dev" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
+    rel="stylesheet" />
+
+  <style>
+    @media (orientation: landscape) and (max-width: 1023px) {
+      .landscape-hide {
+        display: none !important;
+      }
+
+      .landscape-desktop {
+        display: block !important;
+      }
+    }
+
+    /* Generic helpers retained for footer + header button */
+    .mb-16 {
+      margin-bottom: 4rem !important;
+    }
+
+    .font-normal {
+      font-weight: 400 !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .flex {
+      display: flex !important;
+    }
+
+    .items-center {
+      align-items: center !important;
+    }
+
+    .justify-center {
+      justify-content: center !important;
+    }
+
+    /* ===== Works: editorial split-preview gallery ===== */
+    .works {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 4rem;
+    }
+
+    .works-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .works-eyebrow {
+      font-family: "Source Serif 4", serif;
+      font-weight: 200;
+      font-style: italic;
+      font-optical-sizing: auto;
+      font-size: 1.125rem;
+      color: #555;
+    }
+
+    .works-title {
+      margin: 0.25rem 0 0.75rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+      font-size: clamp(3rem, 12vw, 7rem);
+    }
+
+    .works-sub {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .works-sub .ser {
+      font-family: "Source Serif 4", serif;
+      font-weight: 200;
+      font-style: italic;
+      font-optical-sizing: auto;
+    }
+
+    /* Layout (mobile-first: stacked list with inline thumbnails) */
+    .works-split {
+      display: block;
+    }
+
+    .works-preview {
+      display: none;
+    }
+
+    .works-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      position: relative;
+      display: block;
+      color: #000;
+      text-decoration: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.18);
+      transition: opacity 0.3s ease;
+    }
+
+    .works-list .work-item:last-child {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+    }
+
+    .work-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 0.75rem;
+      padding: 1rem 0;
+    }
+
+    .work-no {
+      flex: 0 0 auto;
+      width: 2.5rem;
+      font-family: "Source Serif 4", serif;
+      font-weight: 200;
+      font-style: italic;
+      font-optical-sizing: auto;
+      font-size: 0.95rem;
+      color: #999;
+    }
+
+    .work-title {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      font-size: clamp(1.5rem, 7vw, 2.5rem);
+      text-transform: uppercase;
+      transition: transform 0.3s ease;
+    }
+
+    .work-role {
+      flex: 0 0 auto;
+      margin-left: auto;
+      font-family: "Source Serif 4", serif;
+      font-weight: 200;
+      font-style: italic;
+      font-optical-sizing: auto;
+      font-size: 1.05rem;
+      color: #555;
+      white-space: nowrap;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .work-arrow {
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+      color: #000;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .work-thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      margin: 0.25rem 0 1.25rem;
+      background-color: #f3f4f6;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ===== Desktop: typographic list + sticky image preview ===== */
+    @media (min-width: 768px) {
+      .works {
+        padding-top: 8rem;
+      }
+
+      .works-split {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .works-preview {
+        display: block;
+        position: sticky;
+        top: 7rem;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+
+      .works-preview img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        transition: opacity 0.45s ease;
+      }
+
+      .work-thumb {
+        display: none;
+      }
+
+      .work-line {
+        padding: 1.25rem 0;
+      }
+
+      .work-role,
+      .work-arrow {
+        opacity: 0;
+        transform: translateX(-8px);
+      }
+
+      .work-item:hover .work-role,
+      .work-item:focus-visible .work-role,
+      .work-item:hover .work-arrow,
+      .work-item:focus-visible .work-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .work-item:hover .work-title,
+      .work-item:focus-visible .work-title {
+        transform: translateX(12px);
+      }
+
+      .works-list:hover .work-item,
+      .works-list:focus-within .work-item {
+        opacity: 0.4;
+      }
+
+      .works-list:hover .work-item:hover,
+      .works-list:focus-within .work-item:focus-within {
+        opacity: 1;
+      }
+    }
+
+    .works .footer-text {
+      margin-top: 5rem;
+    }
+
+    /* Footer Sizing - Matching Home Page */
+    .footer-text {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+    }
+
+    @media (min-width: 640px) {
+      .footer-text {
+        font-size: 1.125rem !important;
+        line-height: 1.75rem !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .md-hidden {
+        display: none !important;
+      }
+
+      .footer-text {
+        font-size: 1.5rem !important;
+        line-height: 2rem !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-text {
+        font-size: 1.875rem !important;
+        line-height: 2.25rem !important;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .footer-text {
+        font-size: 2.25rem !important;
+        line-height: 2.5rem !important;
+      }
+    }
+
+    /* (legacy grid styles removed — replaced by split-preview layout) */
+  </style>
+</head>
+
+<body class="__className_e8ce0c">
+  <div class="min-h-screen relative bg-white text-black">
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center p-6">
+      <h1 class="tracking-tight font-normal text-2xl md:text-3xl lg:text-4xl"><a href="index.html">TONY BERMEA</a></h1>
+      <button class="absolute right-6 top-6 md-hidden w-8 h-8 flex items-center justify-center landscape-hide"
+        aria-label="Toggle menu" data-mobile-menu-toggle>
+        <div class="relative w-6 h-6">
+          <span
+            class="absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 rotate-0"></span><span
+            class="absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 rotate-90"></span>
+        </div>
+      </button>
+    </header>
+    <div
+      class="fixed inset-0 z-40 bg-white transition-transform duration-300 md:hidden -translate-y-full landscape-hide"
+      data-mobile-menu>
+      <button class="absolute top-6 right-6 z-50 w-8 h-8 flex items-center justify-center landscape-hide"
+        aria-label="Close menu" data-mobile-menu-close>
+        <div class="relative w-6 h-6">
+          <span
+            class="absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 rotate-45"></span><span
+            class="absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
+        </div>
+      </button>
+      <div class="p-6 h-full flex flex-col justify-center">
+        <div class="text-black space-y-2 text-center leading-tight">
+          <div class="text-2xl font-normal">AN EXPERIENCE ENGINEER</div>
+          <div class="text-lg" style="
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-weight: 200;
+                font-style: italic;
+                font-optical-sizing: auto;
+              ">
+            and software consultant
+          </div>
+          <div class="text-lg font-normal">
+            <span style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">specialized in
+            </span>
+          </div>
+          <div class="text-2xl font-normal">HUMAN-DRIVEN PROJECTS</div>
+          <div class="text-lg" style="
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-weight: 200;
+                font-style: italic;
+                font-optical-sizing: auto;
+              ">
+            oriented to
+          </div>
+          <div class="text-2xl font-normal">BRANDS,</div>
+          <div class="text-2xl font-normal">
+            WEB DEV &amp; CLOUD SOLUTIONS.<!-- -->
+            <span class="text-lg" style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">Based in</span>
+          </div>
+          <div class="text-lg" style="
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-weight: 200;
+                font-style: italic;
+                font-optical-sizing: auto;
+              ">
+            Kansai <span class="text-sm align-super">(🇯🇵)</span>
+          </div>
+          <div class="text-2xl font-normal mt-4">
+            — SEE MY WORK<!-- -->
+            <span class="text-lg" style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">@</span>
+            <a class="hover:underline font-light" href="https://www.behance.net/tbdev">Behance</a>
+          </div>
+          <div class="text-2xl font-normal">
+            <span class="text-lg" style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">&amp;</span>
+            <a class="hover:underline font-light" href="works.html">HERE</a>
+          </div>
+          <div class="text-2xl font-normal mt-6">
+            <span style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">Contact:</span>
+            T<!-- -->
+            <a href="tel:+8107091282315" class="hover:cursor-pointer"><span class="text-sm align-super" style="
+                    font-family: &quot;Source Serif 4&quot;, serif;
+                    font-weight: 200;
+                    font-style: italic;
+                    font-optical-sizing: auto;
+                  ">+81</span>
+              <!-- -->(0)70-9128-2315</a>
+          </div>
+          <div class="text-lg mt-2">
+            <a href="mailto:hello@tonybermea.dev" class="hover:underline" style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 200;
+                  font-style: italic;
+                  font-optical-sizing: auto;
+                ">hello@tonybermea.dev</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="works landscape-desktop">
+      <div class="works-head">
+        <div class="works-eyebrow">Selected</div>
+        <h2 class="works-title">Works</h2>
+        <div class="works-sub"><span class="ser">— a record of</span> HUMAN-DRIVEN PROJECTS</div>
+      </div>
+
+      <div class="works-split">
+        <div class="works-preview">
+          <img id="work-preview-img" src="images/Project_1.png" alt="" width="800" height="1000" decoding="async" />
+        </div>
+
+        <div class="works-list">
+          <!-- Project 1 -->
+          <a class="work-item" href="https://coffeecupping.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_1.png">
+            <span class="work-line">
+              <span class="work-no">No.01</span>
+              <span class="work-title">Coffee Cupping (Leveling Matrix)</span>
+              <span class="work-role">Web App</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_1.png');"></span>
+          </a>
+          <!-- Project 2 -->
+          <a class="work-item" href="https://luxury-granita-71ba5b.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_2.png">
+            <span class="work-line">
+              <span class="work-no">No.02</span>
+              <span class="work-title">NPKN Studio</span>
+              <span class="work-role">Studio Identity</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_2.png');"></span>
+          </a>
+          <!-- Project 3 -->
+          <a class="work-item" href="https://incomparable-pavlova-a2cde8.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_3.png">
+            <span class="work-line">
+              <span class="work-no">No.03</span>
+              <span class="work-title">Elevé</span>
+              <span class="work-role">Branding</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_3.png');"></span>
+          </a>
+          <!-- Project 4 -->
+          <a class="work-item" href="https://silly-faloodeh-0d1ed4.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_4.png">
+            <span class="work-line">
+              <span class="work-no">No.04</span>
+              <span class="work-title">Soul Mag</span>
+              <span class="work-role">Editorial</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_4.png');"></span>
+          </a>
+          <!-- Project 5 -->
+          <a class="work-item" href="https://phenomenal-custard-0bd4af.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_5.png">
+            <span class="work-line">
+              <span class="work-no">No.05</span>
+              <span class="work-title">Pixel Vault</span>
+              <span class="work-role">Web Design</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_5.png');"></span>
+          </a>
+          <!-- Project 6 -->
+          <a class="work-item" href="https://celebrated-lolly-eb3fc5.netlify.app" target="_blank" rel="noopener"
+            data-img="images/Project_6.png">
+            <span class="work-line">
+              <span class="work-no">No.06</span>
+              <span class="work-title">Sugary</span>
+              <span class="work-role">Brand / Shop</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_6.png');"></span>
+          </a>
+          <!-- Project 7 -->
+          <a class="work-item" href="https://github.com/TonyBermea" target="_blank" rel="noopener"
+            data-img="images/Project_7.png">
+            <span class="work-line">
+              <span class="work-no">No.07</span>
+              <span class="work-title">GitHub</span>
+              <span class="work-role">Code</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_7.png');"></span>
+          </a>
+          <!-- Project 8 -->
+          <a class="work-item" href="https://heartfelt-valkyrie-8bb3ff.netlify.app/" target="_blank" rel="noopener"
+            data-img="images/Project_8.png">
+            <span class="work-line">
+              <span class="work-no">No.08</span>
+              <span class="work-title">Portfolio (Concept)</span>
+              <span class="work-role">Concept</span>
+              <span class="work-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="work-thumb" style="background-image: url('images/Project_8.png');"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mb-16 footer-text">
+        <div class="flex justify-center items-center gap-2 flex-wrap">
+          <span
+            style="font-family: &quot;Source Serif 4&quot;, serif; font-weight: 200; font-style: italic; font-optical-sizing: auto;">Contact:</span>
+          <span class="font-normal">T</span>
+          <a href="tel:+8107091282315" class="hover:cursor-pointer"><span class="text-sm align-super"
+              style="font-family: &quot;Source Serif 4&quot;, serif; font-weight: 200; font-style: italic; font-optical-sizing: auto;">+81</span>
+            (0)70-9128-2315</a>
+          <a href="mailto:hello@tonybermea.dev" class="hover:underline"
+            style="font-family: &quot;Source Serif 4&quot;, serif; font-weight: 200; font-style: italic; font-optical-sizing: auto;">hello@tonybermea.dev</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      const SELECTOR_MENU = "[data-mobile-menu]";
+      const SELECTOR_TOGGLE = "[data-mobile-menu-toggle]";
+      const mq = window.matchMedia(
+        "(orientation: landscape) and (max-width: 1023px)",
+      );
+      const closeMenu = () => {
+        const menu = document.querySelector(SELECTOR_MENU);
+        if (!menu) return;
+        menu.classList.remove(
+          "translate-y-0",
+          "opacity-100",
+          "pointer-events-auto",
+          "visible",
+        );
+        menu.classList.add("-translate-y-full");
+        menu.setAttribute("aria-hidden", "true");
+        menu.setAttribute("inert", "");
+        const toggle = document.querySelector(SELECTOR_TOGGLE);
+        if (toggle) toggle.setAttribute("aria-expanded", "false");
+        document.body.style.removeProperty("overflow");
+        document.documentElement.style.removeProperty("overflow");
+      };
+      const restoreMenu = () => {
+        const menu = document.querySelector(SELECTOR_MENU);
+        if (menu) menu.removeAttribute("inert");
+      };
+      const handle = () => {
+        if (mq.matches) {
+          closeMenu();
+        } else {
+          restoreMenu();
+        }
+      };
+      handle();
+      if (mq.addEventListener) {
+        mq.addEventListener("change", handle);
+      } else if (mq.addListener) {
+        mq.addListener(handle);
+      }
+      window.addEventListener("orientationchange", handle);
+      window.addEventListener("resize", handle);
+    })();
+  </script>
+  <script>
+    (function () {
+      var mq = window.matchMedia('(min-width: 768px)');
+      var preview = document.getElementById('work-preview-img');
+      var items = document.querySelectorAll('.work-item');
+      if (!preview || !items.length) return;
+
+      function show(src) {
+        if (!mq.matches || preview.getAttribute('src') === src) return;
+        preview.style.opacity = '0';
+        preview.setAttribute('src', src);
+      }
+
+      preview.addEventListener('load', function () {
+        preview.style.opacity = '1';
+      });
+
+      items.forEach(function (item) {
+        var src = item.getAttribute('data-img');
+        if (!src) return;
+        item.addEventListener('mouseenter', function () { show(src); });
+        item.addEventListener('focus', function () { show(src); });
+      });
+    })();
+  </script>
+</body>
+
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggleBtn = document.querySelector('[data-mobile-menu-toggle]');
+    var closeBtn = document.querySelector('[data-mobile-menu-close]');
+    var menu = document.querySelector('[data-mobile-menu]');
+
+    if (!toggleBtn || !menu) return;
+
+    var spans = toggleBtn.querySelectorAll('span');
+
+    function toggleMenu() {
+      var isOpen = menu.classList.contains('translate-y-0');
+      if (isOpen) {
+        // Close
+        menu.classList.remove('translate-y-0');
+        menu.classList.add('-translate-y-full');
+        // Reset Icon
+        if (spans.length >= 2) {
+          spans[0].classList.remove('rotate-45');
+          spans[0].classList.add('rotate-0');
+          spans[1].classList.remove('-rotate-45');
+          spans[1].classList.add('rotate-90');
+        }
+      } else {
+        // Open
+        menu.classList.remove('-translate-y-full');
+        menu.classList.add('translate-y-0');
+        // Rotate Icon
+        if (spans.length >= 2) {
+          spans[0].classList.remove('rotate-0');
+          spans[0].classList.add('rotate-45');
+          spans[1].classList.remove('rotate-90');
+          spans[1].classList.add('-rotate-45');
+        }
+      }
+    }
+
+    toggleBtn.addEventListener('click', toggleMenu);
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        if (menu.classList.contains('translate-y-0')) toggleMenu();
+      });
+    }
+  });
+</script>

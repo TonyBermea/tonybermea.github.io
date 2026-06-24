@@ -1,0 +1,17 @@
+# Domain related
+CNAME
+
+# README.md for AI Agents
+
+# Ignore all .vscode configs
+.vscode/
+
+# Ignore all AI Agent.md files
+AGENTS.md
+node_modules
+
+# Ignore all Python scripts
+*.py
+
+# Ignore README.md
+README.md
