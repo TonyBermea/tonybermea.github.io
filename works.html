@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preload" href="_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin=""
-    type="font/woff2" />
+  <link rel="preload" href="_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2" />
   <link rel="stylesheet" href="_next/static/css/efe24a2c66697c5f.css" data-precedence="next" />
 
 
@@ -231,15 +230,15 @@
       }
 
       .work-item:hover .work-role,
-      .work-item:focus-visible .work-role,
+      .work-item:focus-within .work-role,
       .work-item:hover .work-arrow,
-      .work-item:focus-visible .work-arrow {
+      .work-item:focus-within .work-arrow {
         opacity: 1;
         transform: translateX(0);
       }
 
       .work-item:hover .work-title,
-      .work-item:focus-visible .work-title {
+      .work-item:focus-within .work-title {
         transform: translateX(12px);
       }
 
@@ -251,6 +250,133 @@
       .works-list:hover .work-item:hover,
       .works-list:focus-within .work-item:focus-within {
         opacity: 1;
+      }
+    }
+
+    /* ===== Inline case-study (expandable rows 01–06) ===== */
+    .work-trigger {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .work-toggle {
+      flex: 0 0 auto;
+      width: 0.85rem;
+      height: 0.85rem;
+      margin-left: 0.25rem;
+      opacity: 0.4;
+      background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E");
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .work-trigger:hover .work-toggle,
+    .work-item.is-open .work-toggle {
+      opacity: 1;
+    }
+
+    .work-item.is-open .work-toggle {
+      transform: rotate(180deg);
+    }
+
+    .work-case {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s ease;
+    }
+
+    .work-item.is-open .work-case {
+      grid-template-rows: 1fr;
+    }
+
+    .case-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .case-pad {
+      padding: 0.25rem 0 2.25rem;
+    }
+
+    .case-meta {
+      margin: 0 0 1.1rem;
+      font-family: "Source Serif 4", serif;
+      font-weight: 200;
+      font-style: italic;
+      font-optical-sizing: auto;
+      font-size: 0.95rem;
+      color: #888;
+    }
+
+    .case-lead {
+      margin: 0 0 1.5rem;
+      max-width: 42rem;
+      font-family: "Source Serif 4", serif;
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+
+    .case-h {
+      margin: 1.5rem 0 0.35rem;
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .case-pad p:not(.case-lead):not(.case-meta) {
+      margin: 0;
+      max-width: 42rem;
+      font-family: "Source Serif 4", serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .case-visit {
+      display: inline-block;
+      margin-top: 1.75rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      color: #000;
+      text-decoration: none;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .case-visit:hover,
+    .case-visit:focus-visible {
+      background-color: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    @media (min-width: 768px) {
+      .case-pad {
+        padding-left: 3.25rem;
+      }
+
+      .works-list:hover .work-item.is-open,
+      .works-list:focus-within .work-item.is-open {
+        opacity: 1;
+      }
+
+      .work-item.is-open .work-role {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
 
@@ -432,71 +558,179 @@
 
         <div class="works-list">
           <!-- Project 1 -->
-          <a class="work-item" href="https://coffeecupping.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_1.png">
-            <span class="work-line">
-              <span class="work-no">No.01</span>
-              <span class="work-title">Coffee Cupping (Leveling Matrix)</span>
-              <span class="work-role">Web App</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_1.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-01"
+              data-img="images/Project_1.png">
+              <span class="work-line">
+                <span class="work-no">No.01</span>
+                <span class="work-title">Coffee Cupping (Leveling Matrix)</span>
+                <span class="work-role">Web App</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_1.png');"></span>
+            </button>
+            <div class="work-case" id="case-01">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Web App · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Coffee Cupping is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://coffeecupping.netlify.app" target="_blank" rel="noopener">Visit
+                    live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 2 -->
-          <a class="work-item" href="https://luxury-granita-71ba5b.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_2.png">
-            <span class="work-line">
-              <span class="work-no">No.02</span>
-              <span class="work-title">NPKN Studio</span>
-              <span class="work-role">Studio Identity</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_2.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-02"
+              data-img="images/Project_2.png">
+              <span class="work-line">
+                <span class="work-no">No.02</span>
+                <span class="work-title">NPKN Studio</span>
+                <span class="work-role">Studio Identity</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_2.png');"></span>
+            </button>
+            <div class="work-case" id="case-02">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Studio Identity · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what NPKN Studio is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://luxury-granita-71ba5b.netlify.app" target="_blank"
+                    rel="noopener">Visit live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 3 -->
-          <a class="work-item" href="https://incomparable-pavlova-a2cde8.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_3.png">
-            <span class="work-line">
-              <span class="work-no">No.03</span>
-              <span class="work-title">Elevé</span>
-              <span class="work-role">Branding</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_3.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-03"
+              data-img="images/Project_3.png">
+              <span class="work-line">
+                <span class="work-no">No.03</span>
+                <span class="work-title">Elevé</span>
+                <span class="work-role">Branding</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_3.png');"></span>
+            </button>
+            <div class="work-case" id="case-03">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Branding · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Elevé is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://incomparable-pavlova-a2cde8.netlify.app" target="_blank"
+                    rel="noopener">Visit live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 4 -->
-          <a class="work-item" href="https://silly-faloodeh-0d1ed4.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_4.png">
-            <span class="work-line">
-              <span class="work-no">No.04</span>
-              <span class="work-title">Soul Mag</span>
-              <span class="work-role">Editorial</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_4.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-04"
+              data-img="images/Project_4.png">
+              <span class="work-line">
+                <span class="work-no">No.04</span>
+                <span class="work-title">Soul Mag</span>
+                <span class="work-role">Editorial</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_4.png');"></span>
+            </button>
+            <div class="work-case" id="case-04">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Editorial · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Soul Mag is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed?.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://silly-faloodeh-0d1ed4.netlify.app" target="_blank"
+                    rel="noopener">Visit live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 5 -->
-          <a class="work-item" href="https://phenomenal-custard-0bd4af.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_5.png">
-            <span class="work-line">
-              <span class="work-no">No.05</span>
-              <span class="work-title">Pixel Vault</span>
-              <span class="work-role">Web Design</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_5.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-05"
+              data-img="images/Project_5.png">
+              <span class="work-line">
+                <span class="work-no">No.05</span>
+                <span class="work-title">Pixel Vault</span>
+                <span class="work-role">Web Design</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_5.png');"></span>
+            </button>
+            <div class="work-case" id="case-05">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Web Design · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Pixel Vault is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://phenomenal-custard-0bd4af.netlify.app" target="_blank"
+                    rel="noopener">Visit live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 6 -->
-          <a class="work-item" href="https://celebrated-lolly-eb3fc5.netlify.app" target="_blank" rel="noopener"
-            data-img="images/Project_6.png">
-            <span class="work-line">
-              <span class="work-no">No.06</span>
-              <span class="work-title">Sugary</span>
-              <span class="work-role">Brand / Shop</span>
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </span>
-            <span class="work-thumb" style="background-image: url('images/Project_6.png');"></span>
-          </a>
+          <div class="work-item is-expandable">
+            <button class="work-trigger" type="button" aria-expanded="false" aria-controls="case-06"
+              data-img="images/Project_6.png">
+              <span class="work-line">
+                <span class="work-no">No.06</span>
+                <span class="work-title">Sugary</span>
+                <span class="work-role">Brand / Shop</span>
+                <span class="work-toggle" aria-hidden="true"></span>
+              </span>
+              <span class="work-thumb" style="background-image: url('images/Project_6.png');"></span>
+            </button>
+            <div class="work-case" id="case-06">
+              <div class="case-inner">
+                <div class="case-pad">
+                  <p class="case-meta">Brand / Shop · <span class="case-year">[year]</span></p>
+                  <p class="case-lead">[OVERVIEW — 2–3 sentences on what Sugary is and your role.]</p>
+                  <h3 class="case-h">The brief</h3>
+                  <p>[What the client or problem needed.]</p>
+                  <h3 class="case-h">Approach</h3>
+                  <p>[What you designed &amp; built — the key decisions.]</p>
+                  <h3 class="case-h">Outcome</h3>
+                  <p>[The result — what shipped, impact, what you'd highlight.]</p>
+                  <a class="case-visit" href="https://celebrated-lolly-eb3fc5.netlify.app" target="_blank"
+                    rel="noopener">Visit live site ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Project 7 -->
           <a class="work-item" href="https://github.com/TonyBermea" target="_blank" rel="noopener"
             data-img="images/Project_7.png">
@@ -594,24 +828,54 @@
     (function () {
       var mq = window.matchMedia('(min-width: 768px)');
       var preview = document.getElementById('work-preview-img');
-      var items = document.querySelectorAll('.work-item');
-      if (!preview || !items.length) return;
 
       function show(src) {
-        if (!mq.matches || preview.getAttribute('src') === src) return;
+        if (!preview || !mq.matches || !src || preview.getAttribute('src') === src) return;
         preview.style.opacity = '0';
         preview.setAttribute('src', src);
       }
 
-      preview.addEventListener('load', function () {
-        preview.style.opacity = '1';
+      if (preview) {
+        preview.addEventListener('load', function () {
+          preview.style.opacity = '1';
+        });
+      }
+
+      // Hover/focus swaps the sticky preview image (trigger buttons + link rows).
+      document.querySelectorAll('[data-img]').forEach(function (el) {
+        var src = el.getAttribute('data-img');
+        if (!src) return;
+        el.addEventListener('mouseenter', function () { show(src); });
+        el.addEventListener('focus', function () { show(src); });
       });
 
-      items.forEach(function (item) {
-        var src = item.getAttribute('data-img');
-        if (!src) return;
-        item.addEventListener('mouseenter', function () { show(src); });
-        item.addEventListener('focus', function () { show(src); });
+      // Inline case-study accordion (single-open).
+      var triggers = document.querySelectorAll('.work-trigger');
+      function setOpen(trigger, open) {
+        var item = trigger.closest('.work-item');
+        var panel = document.getElementById(trigger.getAttribute('aria-controls'));
+        trigger.setAttribute('aria-expanded', String(open));
+        if (item) item.classList.toggle('is-open', open);
+        if (panel) {
+          if (open) {
+            panel.removeAttribute('inert');
+            panel.removeAttribute('aria-hidden');
+          } else {
+            panel.setAttribute('inert', '');
+            panel.setAttribute('aria-hidden', 'true');
+          }
+        }
+      }
+      triggers.forEach(function (trigger) {
+        setOpen(trigger, false);
+        trigger.addEventListener('click', function () {
+          var willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+          triggers.forEach(function (other) {
+            if (other !== trigger) setOpen(other, false);
+          });
+          setOpen(trigger, willOpen);
+          if (willOpen) show(trigger.getAttribute('data-img'));
+        });
       });
     })();
   </script>
