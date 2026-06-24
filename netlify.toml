@@ -1,7 +1,0 @@
-# tonybermea.dev is committed here as a pre-built static export
-# (index.html, works.html, 404.html, _next/…). There is no Next.js
-# source in this repo, so Netlify must publish the files as-is and
-# must NOT run `next build`.
-[build]
-  publish = "."
-  command = "echo 'Static export — no build step.'"
