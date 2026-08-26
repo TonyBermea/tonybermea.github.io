@@ -28,6 +28,7 @@ const work = defineCollection({
       heroAlt: z.string().min(1),
       heroCaption: z.string().min(1),
       socialImage: image(),
+      status: z.enum(["decommissioned"]).optional(),
       liveUrl: z.url().refine((value) => value.startsWith("https://"), {
         message: "liveUrl must use HTTPS",
       }).optional(),

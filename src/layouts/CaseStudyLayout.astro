@@ -14,6 +14,7 @@ interface Props {
   heroAlt: string;
   heroCaption: string;
   socialImage: ImageMetadata;
+  status?: "decommissioned";
   liveUrl?: string;
   liveLabel?: string;
 }
@@ -28,6 +29,7 @@ const {
   heroAlt,
   heroCaption,
   socialImage,
+  status,
   liveUrl,
   liveLabel = "visit live project ↗︎",
 } = Astro.props;
@@ -44,7 +46,7 @@ const homeHref = import.meta.env.BASE_URL;
     <header class="case-header">
       <a class="back-link" href={homeHref}>← {siteIdentity.displayName}</a>
       <h1>{title}</h1>
-      <p class="dateline">{period} · {projectType}</p>
+      <p class="dateline">{period}{status ? ` · ${status}` : ""} · {projectType}</p>
       <p class="case-deck">{deck}</p>
       {liveUrl && (
         <p class="case-live-link">

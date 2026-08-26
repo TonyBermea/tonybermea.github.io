@@ -3,14 +3,14 @@ title: Lineage
 period: "2025"
 projectType: synthetic clinical workflow prototype
 deck: A protocol versioning concept for showing one clinical study model, its regional branches, and an auditable history of change.
-cardDescription: A structured protocol workspace for regional branching, field-level diffs, and legible merge history.
+cardDescription: Clinical protocol changes organized by region, field, and revision history.
 seoDescription: Lineage is Tony Bermea's synthetic product prototype for structured clinical protocol versioning and regional change review.
 accent: orange
 hero: ../../assets/lineage/lineage-hero.png
 heroAlt: Lineage protocol workspace showing a structured study document, main branch, regional branches, and version metadata.
 heroCaption: The Protocol view treats a study definition as structured, versioned fields rather than a stack of disconnected documents.
 socialImage: ../../assets/lineage/lineage-hero.png
-liveUrl: https://lineage-trials.netlify.app/
+# liveUrl: https://lineage-trials.netlify.app/
 draft: false
 ---
 
@@ -20,7 +20,7 @@ import protocolFallback from "../../assets/lineage/protocol-diff-fallback.png";
 
 ## A versioning problem hidden in documents
 
-Clinical protocols change as a study moves through review and into different regions. In a document-based workflow, the reasoning behind those changes can become harder to inspect than the latest wording itself. Lineage explores a different model: one structured protocol, a fixed main branch, and regional variants that expose their differences field by field.
+Clinical protocols change as a study moves through review and into different regions. When the work lives in documents, the reasoning behind those changes can become harder to inspect than the latest wording itself. Lineage explores a different model: one structured protocol, a fixed main branch, and regional variants that expose their differences field by field.
 
 The prototype borrows a familiar branching vocabulary without pretending a clinical protocol is source code. Version labels, commits, diffs, and history are used as orientation devices for reviewers who need to know what changed, where it changed, and which regional record now carries it.
 
@@ -35,13 +35,13 @@ The prototype borrows a familiar branching vocabulary without pretending a clini
 
 ## One structured protocol model
 
-The Protocol view groups study identity, design, endpoints, safety, registration, and governance into stable sections. Each value has an explicit home and can be compared without relying on page position or tracked-change markup.
+The Protocol view groups study identity, design, endpoints, safety, registration, and governance into stable sections. Each value has an explicit home and can be compared without relying on page position or tracked changes.
 
 This structure also supports regional branching. A branch carries only its divergence from main, while the interface reconstructs a complete regional reading. The reviewer sees a usable protocol and an account of its differences at the same time.
 
 ## Regional branches with auditable diffs
 
-The European Union capture below shows the broader product view: a fixed base, a regional branch, a change summary, and section-level differences. The focused prototype then reduces that model to three selectable branches and representative before/after fields.
+The European Union capture below shows the broader product view: a fixed base, a regional branch, a change summary, and the differences within each section. The focused prototype then reduces that model to three selectable branches and representative before and after fields.
 
 <Figure
   src={euDiff}
@@ -62,14 +62,14 @@ The European Union capture below shows the broader product view: a fixed base, a
 
 A merge in Lineage is not an automatic clinical decision. It is a proposed reconciliation: the branch, its reviewer, and the accepted fields remain visible before a new main version is recorded. That framing keeps product language from obscuring governance.
 
-History provides the longer view. Commits are grouped by branch, labeled with their protocol version, and tied to the synthetic author and timestamp that produced the state. A reviewer can move from a high-level chronology back into the exact fields changed in a regional review.
+History provides the longer view. Commits are grouped by branch, labeled with their protocol version, and tied to the synthetic author and timestamp that produced the state. A reviewer can move from the chronology back into the exact fields changed in a regional review.
 
 <Gallery
   items={[
     {
       src: euDiff,
-      alt: "Lineage regional diff with field-level before and after values",
-      caption: "Regional review keeps branch identity, change counts, and field-level evidence in one view.",
+      alt: "Lineage regional comparison with values shown before and after each change",
+      caption: "Regional review keeps branch identity, change counts, and the evidence for each field in one view.",
     },
     {
       src: historyView,
@@ -85,6 +85,6 @@ The prototype turns a difficult document comparison into a more legible sequence
 
 Lineage is a product and interaction concept. It is not validated clinical software, does not automate regulatory decisions, and should not be used to author or review a real trial.
 
-<Notes title="Synthetic clinical-data notice">
+<Notes title="Synthetic clinical data notice">
   The product, sponsor, drug, study, protocol, trial identifiers, contributors, branch history, clinical values, and regulatory records in Lineage are synthetic prototype content. Nothing shown is medical advice, a regulatory record, or production medical software.
 </Notes>

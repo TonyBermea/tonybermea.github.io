@@ -64,6 +64,7 @@ export interface CaseStudyFrontmatter {
   heroAlt: string;
   heroCaption: string;
   socialImage: ImageMetadata;
+  status?: "decommissioned";
   liveUrl?: string;
   liveLabel?: string;
   draft?: boolean;
@@ -85,6 +86,7 @@ export type ResolvedSelectedWork =
       description: string;
       href: `/work/${string}/`;
       newTab: false;
+      status?: "decommissioned";
       frontmatter: CaseStudyFrontmatter;
     });
 
@@ -254,6 +256,10 @@ export function validateCaseStudyFrontmatter(
   const heroCaption = requireString(value, "heroCaption", context);
   const socialImage = requireImageMetadata(value.socialImage, "socialImage", context);
 
+  if (value.status !== undefined && value.status !== "decommissioned") {
+    throw new Error(`${context} has invalid status`);
+  }
+
   if (value.liveUrl !== undefined && (!nonEmptyString(value.liveUrl) || !isSafeHttpsUrl(value.liveUrl))) {
     throw new Error(`${context} has unsafe liveUrl: ${String(value.liveUrl)}`);
   }
@@ -282,6 +288,7 @@ export function validateCaseStudyFrontmatter(
     heroAlt,
     heroCaption,
     socialImage,
+    ...(value.status === undefined ? {} : { status: value.status }),
     ...(value.liveUrl === undefined ? {} : { liveUrl: value.liveUrl.trim() }),
     ...(value.liveLabel === undefined ? {} : { liveLabel: value.liveLabel.trim() }),
     ...(value.draft === undefined ? {} : { draft: value.draft }),
@@ -362,6 +369,7 @@ export function resolveSelectedWork(
         description: frontmatter.cardDescription,
         href: `/work/${item.slug}/` as `/work/${string}/`,
         newTab: false,
+        ...(frontmatter.status === undefined ? {} : { status: frontmatter.status }),
         frontmatter,
       };
     });

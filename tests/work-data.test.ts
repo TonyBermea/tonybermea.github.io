@@ -31,6 +31,19 @@ const frontmatter = {
   draft: false,
 } as const;
 
+const externalWork = {
+  kind: "external",
+  id: "archive-snapshot",
+  title: "Archive Snapshot",
+  period: "2022",
+  description: "A preserved external project used to exercise the public work interface.",
+  href: "https://example.org/archive-snapshot",
+  order: 20,
+  accent: "pink",
+  status: "decommissioned",
+  newTab: true,
+} as const satisfies SelectedWork;
+
 describe("selected work", () => {
   it("contains eight stable entries and uses every accent exactly once", () => {
     expect(() => validateSelectedWork(selectedWork)).not.toThrow();
@@ -39,9 +52,10 @@ describe("selected work", () => {
     expect(new Set(selectedWork.map((item) => item.accent))).toEqual(new Set(ACCENTS));
   });
 
-  it("contains six internal studies and two external projects in the required order", () => {
-    const internal = selectedWork.filter((item) => item.kind === "case-study");
-    const external = selectedWork.filter((item) => item.kind === "external");
+  it("contains eight internal studies and no external projects in the required order", () => {
+    const entries: readonly SelectedWork[] = selectedWork;
+    const internal = entries.filter((item) => item.kind === "case-study");
+    const external = entries.filter((item) => item.kind === "external");
 
     expect(internal.map((item) => item.slug)).toEqual([
       "field-index",
@@ -50,22 +64,19 @@ describe("selected work", () => {
       "lineage",
       "npkn-studio",
       "mchns",
+      "soul-mag",
+      "pixel-vault",
     ]);
-    expect(external.map((item) => item.id)).toEqual(["soul-mag", "pixel-vault"]);
-    for (const item of external) {
-      expect(item.newTab).toBe(true);
-      expect(new URL(item.href).protocol).toBe("https:");
-    }
-    expect(external[1]).toMatchObject({ period: "2023", status: "decommissioned" });
+    expect(external).toHaveLength(0);
   });
 });
 
 describe("selected work validation", () => {
   it("rejects duplicate external ids, case-study slugs, and orders", () => {
-    const external = selectedWork[6];
+    const external = externalWork;
     const caseStudy = selectedWork[0];
 
-    expect(() => validateSelectedWork([external, { ...external, order: 20 }])).toThrow(
+    expect(() => validateSelectedWork([external, { ...external, order: 21 }])).toThrow(
       /duplicate external id/i,
     );
     expect(() =>
@@ -77,7 +88,7 @@ describe("selected work validation", () => {
   });
 
   it("rejects invalid accents, incomplete records, status values, and unsafe hrefs", () => {
-    const external = selectedWork[6];
+    const external = externalWork;
 
     expect(() =>
       validateSelectedWork([{ ...external, accent: "ultraviolet" }]),
@@ -96,12 +107,12 @@ describe("selected work validation", () => {
 
 describe("case-study collection resolution", () => {
   it("resolves internal cards from collection metadata and sorts by order", () => {
-    const work: SelectedWork[] = [selectedWork[6], selectedWork[0]];
+    const work: SelectedWork[] = [externalWork, selectedWork[0]];
     const resolved = resolveSelectedWork(work, [
       { id: "field-index.mdx", data: frontmatter },
     ]);
 
-    expect(resolved.map((item) => item.order)).toEqual([1, 7]);
+    expect(resolved.map((item) => item.order)).toEqual([1, 20]);
     expect(resolved[0]).toMatchObject({
       kind: "case-study",
       title: "Field Index",
@@ -175,5 +186,20 @@ describe("case-study collection resolution", () => {
         liveLabel: "view project on Behance ↗︎",
       }),
     ).toThrow(/liveLabel without liveUrl/i);
+  });
+
+  it("allows only the decommissioned case-study status", () => {
+    expect(() =>
+      validateCaseStudyFrontmatter({
+        ...frontmatter,
+        status: "decommissioned",
+      }),
+    ).not.toThrow();
+    expect(() =>
+      validateCaseStudyFrontmatter({
+        ...frontmatter,
+        status: "sunset",
+      }),
+    ).toThrow(/invalid status/i);
   });
 });

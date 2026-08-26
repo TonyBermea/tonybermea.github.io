@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
-import studioHero from "../assets/studio/alex-rowan-studio.jpg";
+import studioHero from "../assets/home/studio-work.jpg";
 import { selectedWork } from "../data/selected-work";
 import { siteIdentity } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -37,7 +37,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
           fetchpriority="high"
         />
       </div>
-      <figcaption>Studio work in progress — maps, field notes, and an evolving digital prototype.</figcaption>
+      <figcaption>Studio work in progress.</figcaption>
     </figure>
 
     <section class="home-section" aria-labelledby="selected-work-heading">
@@ -50,7 +50,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
               target={item.newTab ? "_blank" : undefined}
               rel={item.newTab ? "noreferrer" : undefined}
             >
-              {item.title}{item.period ? ` (${item.period}${item.kind === "external" && item.status ? ` · ${item.status}` : ""})` : ""}
+              {item.title}{item.period ? ` (${item.period}${item.status ? ` · ${item.status}` : ""})` : ""}
             </a>{", "}
             {item.description}
           </li>

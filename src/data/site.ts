@@ -20,7 +20,7 @@ export const siteIdentity = {
   description:
     "Tony Bermea is an experience engineer and software consultant in Kansai, Japan, working across interface design, web engineering, and cloud delivery.",
   biography:
-    "I’m an experience engineer and software consultant based in Kansai, Japan. I design and build human-centered digital products for brands, creative studios, and complex operational workflows—working across interface design, web engineering, and cloud delivery.",
+    "I’m an experience engineer and software consultant based in Kansai, Japan. I design and build digital products for brands, creative studios, and teams with complex workflows, working across interface design, web engineering, and cloud delivery.",
   email: "hello@tonybermea.dev",
   links: [
     { label: "behance", href: "https://www.behance.net/tbdev" },

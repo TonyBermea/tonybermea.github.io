@@ -9,8 +9,12 @@ const caseStudyRoutes = [
   "/work/npkn-studio/",
   "/work/gumo-supplies/",
   "/work/mchns/",
+  "/work/soul-mag/",
+  "/work/pixel-vault/",
 ] as const;
 const allRoutes = ["/", ...caseStudyRoutes] as const;
+const playwrightPort = process.env.PLAYWRIGHT_PORT ?? "4331";
+const playwrightBaseUrl = `http://127.0.0.1:${playwrightPort}`;
 
 async function expectNoHorizontalOverflow(page: Page) {
   const dimensions = await page.evaluate(() => ({
@@ -74,7 +78,7 @@ async function expectAccessiblePage(page: Page) {
 }
 
 test.describe("static portfolio", () => {
-  test("homepage is semantic, static, and links to six internal case studies", async ({ page }) => {
+  test("homepage is semantic, static, and links to eight internal case studies", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.locator("h1")).toHaveCount(1);
@@ -82,6 +86,7 @@ test.describe("static portfolio", () => {
     await expect(page.locator(".work-list")).toHaveRole("list");
     await expect(page.locator(".work-list > li")).toHaveCount(8);
     await expect(page.locator("script")).toHaveCount(0);
+    await expect(page.getByAltText(/designer working at a studio table/i)).toBeVisible();
 
     for (const [name, route] of [
       ["Field Index", "/work/field-index/"],
@@ -90,6 +95,8 @@ test.describe("static portfolio", () => {
       ["Lineage", "/work/lineage/"],
       ["NPKN Studio", "/work/npkn-studio/"],
       ["MCHNS", "/work/mchns/"],
+      ["Soul Mag", "/work/soul-mag/"],
+      ["Pixel Vault", "/work/pixel-vault/"],
     ] as const) {
       await expect(page.getByRole("link", { name: new RegExp(name, "i") })).toHaveAttribute("href", route);
     }
@@ -98,13 +105,9 @@ test.describe("static portfolio", () => {
       "href",
       "https://www.linkedin.com/in/tony-bermea/",
     );
-    await expect(page.getByRole("link", { name: /Soul Mag \(2024\)/i })).toHaveAttribute(
-      "href",
-      "https://silly-faloodeh-0d1ed4.netlify.app/",
-    );
     await expect(page.getByRole("link", { name: /Pixel Vault \(2023 · decommissioned\)/i })).toHaveAttribute(
       "href",
-      "https://phenomenal-custard-0bd4af.netlify.app/",
+      "/work/pixel-vault/",
     );
     await expect(page.locator('a[href*="example.com"]')).toHaveCount(0);
     await expect(page.getByText(/Built across product strategy, interface design, web engineering, and cloud delivery/i)).toBeVisible();
@@ -112,6 +115,35 @@ test.describe("static portfolio", () => {
     await page.getByRole("link", { name: /Coffee Cupping/i }).click();
     await expect(page).toHaveURL(/\/work\/coffee-cupping\/$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Coffee Cupping");
+  });
+
+  test("Lineage suppresses its broken live-project link", async ({ page }) => {
+    await page.goto("/work/lineage/");
+    await expect(page.locator('.case-live-link')).toHaveCount(0);
+    await expect(page.locator('a[href="https://lineage-trials.netlify.app/"]')).toHaveCount(0);
+  });
+
+  test("Soul Mag and Pixel Vault remain static with one source link each", async ({ page }) => {
+    await page.goto("/work/soul-mag/");
+    await expect(page.locator("script")).toHaveCount(0);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Soul Mag");
+    const soulLinks = page.locator('a[href="https://silly-faloodeh-0d1ed4.netlify.app/"]');
+    await expect(soulLinks).toHaveCount(1);
+    await expect(soulLinks).toHaveText("view interactive concept ↗︎");
+    await expect(page.locator(".mdx-gallery a, .mdx-figure a")).toHaveCount(0);
+
+    await page.goto("/work/pixel-vault/");
+    await expect(page.locator("script")).toHaveCount(0);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pixel Vault");
+    await expect(page.locator(".dateline")).toHaveText(
+      "2023 · decommissioned · NFT marketplace prototype",
+    );
+    const pixelLinks = page.locator(
+      'a[href="https://phenomenal-custard-0bd4af.netlify.app/"]',
+    );
+    await expect(pixelLinks).toHaveCount(1);
+    await expect(pixelLinks).toHaveText("view preserved snapshot ↗︎");
+    await expect(page.locator(".mdx-gallery a, .mdx-figure a")).toHaveCount(0);
   });
 
   test("NPKN remains fully static", async ({ page }) => {
@@ -328,7 +360,7 @@ test.describe("motion and no-JavaScript resilience", () => {
 test("no-JavaScript visitors see both static interactive fallbacks", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto("http://127.0.0.1:4331/work/field-index/");
+  await page.goto(`${playwrightBaseUrl}/work/field-index/`);
 
   const fallbacks = page.locator(".interactive-demo__fallback");
   await expect(fallbacks).toHaveCount(2);
@@ -350,8 +382,10 @@ test("route-specific no-JavaScript fallbacks stay visible", async ({ browser }) 
     ["/work/npkn-studio/", 0],
     ["/work/gumo-supplies/", 0],
     ["/work/mchns/", 0],
+    ["/work/soul-mag/", 0],
+    ["/work/pixel-vault/", 0],
   ] as const) {
-    await page.goto(`http://127.0.0.1:4331${route}`);
+    await page.goto(`${playwrightBaseUrl}${route}`);
     const fallbacks = page.locator(".interactive-demo__fallback");
     await expect(fallbacks).toHaveCount(expectedFallbacks);
     if (expectedFallbacks > 0) await expect(fallbacks.first()).toBeVisible();
