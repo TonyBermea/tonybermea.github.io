@@ -44,7 +44,7 @@ export default defineConfig({
   site: customSite ?? `https://${pagesOwner.toLowerCase()}.github.io`,
   ...(githubProjectBase ? { base: githubProjectBase } : {}),
   integrations: [mdx(), preact()],
-  outDir: "./dist/client/",
+  outDir: "./dist/",
   trailingSlash: "always",
   build: {
     inlineStylesheets: "always",
