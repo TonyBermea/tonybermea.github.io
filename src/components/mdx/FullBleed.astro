@@ -1,0 +1,41 @@
+---
+type Tone = 'paper' | 'ink' | 'accent';
+type Padding = 'standard' | 'compact';
+type Width = 'bleed' | 'prose';
+
+interface Props {
+  tone?: Tone;
+  padding?: Padding;
+  width?: Width;
+  label?: string;
+  id?: string;
+}
+
+const {
+  tone = 'paper',
+  padding = 'standard',
+  width = 'bleed',
+  label,
+  id,
+} = Astro.props;
+const sectionId = id ?? (label
+  ? `full-bleed-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`
+  : undefined);
+const labelId = label && sectionId ? `${sectionId}-label` : undefined;
+---
+
+<section
+  class:list={[
+    'full-bleed',
+    `full-bleed--${tone}`,
+    `full-bleed--${padding}`,
+    `full-bleed--${width}`,
+  ]}
+  id={sectionId}
+  aria-labelledby={labelId}
+>
+  {label && <h2 class="full-bleed__label visually-hidden" id={labelId}>{label}</h2>}
+  <div class="full-bleed__inner">
+    <slot />
+  </div>
+</section>

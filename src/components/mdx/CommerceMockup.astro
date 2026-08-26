@@ -1,0 +1,108 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface CommerceMockupProduct {
+  readonly id: string;
+  readonly title: string;
+  readonly category: string;
+  readonly price: string;
+  readonly image: ImageMetadata;
+  readonly alt: string;
+}
+
+interface Props {
+  view: "collection" | "product" | "cart";
+  products: readonly CommerceMockupProduct[];
+  selectedId: string;
+  caption: string;
+}
+
+const { view, products, selectedId, caption } = Astro.props;
+const selectedProduct = products.find((product) => product.id === selectedId) ?? products[0];
+
+if (!selectedProduct) {
+  throw new Error("CommerceMockup requires at least one product");
+}
+
+const viewTitles = {
+  collection: "Writing tools / all products",
+  product: selectedProduct.title,
+  cart: "Cart / 2 items",
+} as const;
+---
+
+<figure class:list={["commerce-mockup", `commerce-mockup--${view}`]} data-commerce-view={view}>
+  <div class="commerce-mockup__browser">
+    <header class="commerce-mockup__header">
+      <span class="commerce-mockup__brand">gumo supplies</span>
+      <span aria-hidden="true">catalogue / search / cart (2)</span>
+    </header>
+
+    <div class="commerce-mockup__context">
+      <p class="commerce-mockup__eyebrow">{view === "cart" ? "order review" : "stationery catalogue"}</p>
+      <h3>{viewTitles[view]}</h3>
+    </div>
+
+    {view === "collection" && (
+      <div class="commerce-mockup__collection">
+        <dl class="commerce-mockup__filters" aria-label="Representative collection filters">
+          <div><dt>category</dt><dd>all / paper / writing / desk</dd></div>
+          <div><dt>availability</dt><dd>in stock</dd></div>
+          <div><dt>sort</dt><dd>featured</dd></div>
+        </dl>
+        <ul class="commerce-mockup__products">
+          {products.map((product) => (
+            <li>
+              <Image src={product.image} alt={product.alt} width={product.image.width} height={product.image.height} loading="lazy" decoding="async" />
+              <div class="commerce-mockup__product-meta">
+                <span>{product.title}</span>
+                <span>{product.price}</span>
+              </div>
+              <span class="commerce-mockup__category">{product.category}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {view === "product" && (
+      <div class="commerce-mockup__product-view">
+        <Image src={selectedProduct.image} alt={selectedProduct.alt} width={selectedProduct.image.width} height={selectedProduct.image.height} loading="lazy" decoding="async" />
+        <div class="commerce-mockup__details">
+          <p>{selectedProduct.category}</p>
+          <p class="commerce-mockup__price">{selectedProduct.price}</p>
+          <dl>
+            <div><dt>colour</dt><dd>charcoal / sage</dd></div>
+            <div><dt>format</dt><dd>A5 · plain</dd></div>
+            <div><dt>availability</dt><dd>ready to ship</dd></div>
+          </dl>
+          <div class="commerce-mockup__quantity" aria-label="Representative quantity and cart state">
+            <span>quantity 1</span><strong>add to cart</strong>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {view === "cart" && (
+      <div class="commerce-mockup__cart-view">
+        <ul class="commerce-mockup__cart-lines">
+          {products.slice(0, 2).map((product, index) => (
+            <li>
+              <Image src={product.image} alt={product.alt} width={product.image.width} height={product.image.height} loading="lazy" decoding="async" />
+              <div><strong>{product.title}</strong><span>{product.category} · qty {index + 1}</span></div>
+              <span>{product.price}</span>
+            </li>
+          ))}
+        </ul>
+        <dl class="commerce-mockup__summary">
+          <div><dt>subtotal</dt><dd>¥6,050</dd></div>
+          <div><dt>shipping</dt><dd>calculated at checkout</dd></div>
+          <div class="commerce-mockup__total"><dt>total</dt><dd>¥6,050</dd></div>
+          <div class="commerce-mockup__checkout"><dt>next</dt><dd>secure checkout</dd></div>
+        </dl>
+      </div>
+    )}
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>

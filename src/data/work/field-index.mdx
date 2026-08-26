@@ -1,0 +1,115 @@
+---
+title: Field Index
+period: Spring 2027
+projectType: upcoming public data product
+deck: A public map for exploring local environmental observations alongside the routes, notes, and conditions that give them meaning.
+cardDescription: An upcoming public map for reading local water, air, soil, and community observations in context.
+seoDescription: Field Index is an upcoming public environmental-data explorer from a small Canadian collective, with a public preview planned for Spring 2027.
+accent: vermilion
+hero: ../../assets/field-index/field-index-hero.jpg
+heroAlt: Field Index prototype showing an environmental map, filters, observation points, and a reading detail panel.
+heroCaption: An early Field Index browser view. A public preview is planned for Spring 2027.
+socialImage: ../../assets/field-index/field-index-hero.jpg
+draft: false
+---
+
+import fieldResearch from "../../assets/field-index/field-research.jpg";
+import fieldIndexComparison from "../../assets/field-index/field-index-comparison.jpg";
+import layerMixerFallback from "../../assets/field-index/layer-mixer-fallback.png";
+import patternScaleFallback from "../../assets/field-index/pattern-scale-fallback.png";
+
+## A map for people who notice things
+
+People often notice a change in a place before it finds its way into a tidy report. A creek runs cloudy after heavy rain. A familiar path dries earlier than it did last year. A roadside reading looks different on the afternoon the traffic was diverted.
+
+Field Index is being developed by a small Canadian collective working across field ecology, mapmaking, community organizing, and software. We came together through a shared interest in waterways, trails, and the public spaces people move through every day.
+
+We’re building a public map for citizen scientists and curious local residents. The aim is simple: make environmental observations easier to explore without stripping away the route, note, time, or condition that helps explain each one. The first public preview is planned for Spring 2027.
+
+## One place to follow the evidence
+
+The main view keeps search, filters, the map, and an observation record together. Someone can start with a place they know, open an individual reading, and then see how it relates to nearby routes or an earlier point in time.
+
+The map stays at the centre of the experience. Controls sit around its edges, and the source record remains close at hand. We want it to feel less like reading a dashboard and more like spreading a map and a set of field notes across the same table.
+
+<Figure
+  src={fieldIndexComparison}
+  alt="An early Field Index comparison view with two highlighted routes, a reading timeline, filters, and paired observation summaries"
+  caption="An early comparison view keeps two routes, their readings, and a shared time range in one frame. Names and measurements shown here are sample data."
+  width="wide"
+/>
+
+<Facts
+  items={[
+    { term: "Status", detail: "In development" },
+    { term: "Team", detail: "A small Canadian collective working across field ecology, mapmaking, community organizing, and software" },
+    { term: "Planned preview", detail: "Spring 2027" },
+    { term: "Product focus", detail: "Public environmental data, local context, and route-based comparison" },
+  ]}
+/>
+
+## Layers that explain what you’re seeing
+
+A dot on a map can look more certain than it really is. Field Index separates the view into a few plain layers so people can see what each part represents. Grid provides a geographic reference. Signals show recorded observations. Routes show how those observations connect across a place. Notes carry the details that do not fit neatly into a measurement.
+
+The small prototype below is one part of the product that already works. Grid and Signals appear first; Routes and Notes can be switched on separately. The controls stay deliberately simple because the important thing is knowing what the map is showing at any moment.
+
+<FullBleed>
+  <LayerMixerDemo
+    layers={[
+      { id: "grid", label: "Grid", color: "#a9a397" },
+      { id: "signals", label: "Signals", color: "#3dc1a2" },
+      { id: "routes", label: "Routes", color: "#3e58e2" },
+      { id: "notes", label: "Notes", color: "#e84420" },
+    ]}
+    initialActive={["grid", "signals"]}
+    fallbackSrc={layerMixerFallback}
+    caption="Turn the four map layers on and off. Grid and Signals are shown when the prototype first loads."
+  />
+</FullBleed>
+
+## More detail, without overstating the picture
+
+At a regional scale, showing every available point can turn a map into confetti. It can also make a handful of well-sampled locations look like complete coverage. Field Index uses four levels of display detail instead. Moving from 1× to 8× reveals more points from the same sample set; it does not add readings or change the underlying data.
+
+The current multiplier labels are still part of the prototype. Before the public preview, we plan to replace them with language that describes the view more naturally, from a broad regional scan to close local detail. Whatever the final labels become, the map should always make it clear when some observations are being held back from view.
+
+<FullBleed>
+  <PatternScaleDemo
+    seed={4107}
+    scales={[1, 2, 4, 8]}
+    fallbackSrc={patternScaleFallback}
+    caption="Move through four levels of map detail. Each level reveals more of the same sample observation set."
+  />
+</FullBleed>
+
+## Built around how people move through a place
+
+Some of the most useful context never fits in a measurement column: recent rain, a closed road, shade along the water, or a note made halfway through a walk. Those details are easy to lose once a field record becomes a row in a larger dataset.
+
+We’re shaping Field Index around a familiar path through the evidence: find a place, open an observation, check where and when it was recorded, then compare it with the wider set. Routes and notes remain visible because they often explain the reading better than another summary number would.
+
+<Gallery
+  items={[
+    {
+      src: fieldResearch,
+      alt: "A person holding a water probe and a rugged tablet beside a moving stream",
+      caption: "A sample field scene used to think through how an observation moves from a streamside note to a public map record.",
+    },
+    {
+      src: patternScaleFallback,
+      alt: "A static Field Index map-detail view",
+      caption: "A static version of the map-detail prototype remains available when motion is paused, reduced, or unavailable.",
+    },
+  ]}
+/>
+
+## What we’re working toward
+
+The Spring 2027 preview will focus on one clear loop: find a place, inspect its observations, understand the context around them, and compare what changed. We’re keeping that first release intentionally small while we work through questions of public-data coverage, source clarity, and how much detail belongs on the map at once.
+
+Three ideas continue to guide the work: keep the landscape visible, show where the evidence came from, and be honest about what the map cannot say. Field Index is not meant to declare that a place is safe, healthy, or fully understood. It is a way to look more closely and know what you are looking at.
+
+<Notes title="Project notes">
+  Field Index is an independent product concept in development. The locations, organisations, measurements, and records shown in this preview are sample content and should not be used for environmental decisions. A public preview is planned for Spring 2027.
+</Notes>

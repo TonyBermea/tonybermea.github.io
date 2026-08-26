@@ -1,17 +1,45 @@
-# Domain related
-CNAME
+# Dependencies and generated output
+node_modules/
+.astro/
+dist/
+coverage/
 
-# README.md for AI Agents
+# Test and audit output
+playwright-report/
+test-results/
+.lighthouseci/
+*.log
 
-# Ignore all .vscode configs
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
 .vscode/
+*.swp
 
-# Ignore all AI Agent.md files
+# Local tooling, hosting, and design-review artifacts
+.agents/
+.codex/
+.openai/
+.claude/
+.cursor/
+.windsurf/
+.impeccable.md
 AGENTS.md
-node_modules
-
-# Ignore all Python scripts
-*.py
-
-# Ignore README.md
-README.md
+CLAUDE.md
+GEMINI.md
+.cursorrules
+.windsurfrules
+.github/copilot-instructions.md
+qa/
+design-qa.md
+worker/
+scripts/capture-qa.mjs
+scripts/prepare-sites-build.mjs
+tests/sites-worker.test.mjs
+.npmrc

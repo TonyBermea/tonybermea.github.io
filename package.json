@@ -1,8 +1,29 @@
 {
+  "name": "tony-bermea-portfolio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "check": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test && npm run build && npm run test:e2e"
+  },
   "dependencies": {
-    "eslint-config-next": "^16.0.10",
-    "next": "^16.0.10",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/preact": "^6.0.2",
+    "astro": "^7.1.6",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.1",
+    "lighthouse": "^13.4.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
   }
 }

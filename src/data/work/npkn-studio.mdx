@@ -1,0 +1,117 @@
+---
+title: NPKN Studio
+period: "2024"
+projectType: design studio website study
+deck: A restrained portfolio implementation that lets five very different bodies of work carry the visual identity.
+cardDescription: A responsive studio site study built around project-led imagery, a modular grid, and quiet typography.
+seoDescription: NPKN Studio is Tony Bermea's website study and implementation for a visual communication studio portfolio.
+accent: blue
+hero: ../../assets/npkn-studio/npkn-hero.png
+heroAlt: NPKN Studio desktop homepage with a quiet header and a large project-led image grid.
+heroCaption: The desktop study lets the project archive occupy most of the first viewport while navigation stays deliberately quiet.
+socialImage: ../../assets/npkn-studio/npkn-hero.png
+liveUrl: https://strong-bavarois-ba61f6.netlify.app/
+draft: false
+---
+
+import deviceMockup from "../../assets/npkn-studio/npkn-project-grid-device-mockup.png";
+import plvsLetterhead from "../../assets/npkn-studio/plvs-vltra-letterhead.jpg";
+import plusUltra from "../../assets/npkn-studio/plus-ultra.jpg";
+import zGen from "../../assets/npkn-studio/z-gen.jpg";
+import victorSolorzano from "../../assets/npkn-studio/victor-solorzano.jpg";
+import victorSolorzanoDocument from "../../assets/npkn-studio/victor-solorzano-document.jpg";
+import wowEnglish from "../../assets/npkn-studio/wow-english.jpg";
+import ozitRenit from "../../assets/npkn-studio/ozit-renit.png";
+
+## A studio brief built around the work
+
+NPKN describes itself as a visual communication studio in Coahuila, enthusiastic about functionality and innovation in aesthetics. The website study translates that position into a simple rule: the interface should organize the work without competing with it.
+
+The implementation is intentionally quiet. A compact wordmark, direct navigation, and a pale page field establish the frame; color, texture, motion, and illustration come from each project. This is a website study and implementation, not a claim about a client relationship or a measured commercial outcome.
+
+<Facts
+  items={[
+    { term: "Format", detail: "Responsive studio portfolio study" },
+    { term: "Year", detail: "2024" },
+    { term: "Focus", detail: "Project discovery, image rhythm, and responsive hierarchy" },
+    { term: "Visible services", detail: "Branding, web design, film, editorial, concept, and photography" },
+  ]}
+/>
+
+## Letting project work lead
+
+Five visible projects set the range of the archive: Plus Ultra, Z-Gen, Víctor Solórzano, Wow! English, and Ozit Renit. Their visual languages are deliberately unlike one another, so the surrounding system avoids a decorative house style.
+
+<Gallery
+  layout="lead"
+  label="Six images from five visible projects in the NPKN Studio archive"
+  items={[
+    {
+      src: plusUltra,
+      alt: "Plus Ultra identity composition with pale sculptural forms and sharp black typography",
+      caption: "Plus Ultra",
+    },
+    {
+      src: zGen,
+      alt: "Z-Gen project image with a close editorial crop and layered graphic treatment",
+      caption: "Z-Gen",
+    },
+    {
+      src: victorSolorzano,
+      alt: "Víctor Solórzano identity application using expressive lettering and portrait imagery",
+      caption: "Víctor Solórzano",
+    },
+    {
+      src: victorSolorzanoDocument,
+      alt: "Víctor Solórzano blue medical document folder presented against a vivid red background",
+      caption: "Víctor Solórzano — document system",
+    },
+    {
+      src: wowEnglish,
+      alt: "Wow English School project image with bright color and educational character graphics",
+      caption: "Wow! English",
+    },
+    {
+      src: ozitRenit,
+      alt: "Ozit Renit project image with playful color, illustration, and compact display type",
+      caption: "Ozit Renit",
+    },
+  ]}
+/>
+
+## A modular grid with restrained type
+
+The grid creates hierarchy through scale rather than chrome. A lead project occupies the full first row; the portrait study is balanced by two stacked identity images, followed by a final paired row. Captions remain directly visible beneath every image, so the archive needs no hover behavior or outbound navigation.
+
+Typography plays the opposite role from the imagery. The navigation is compact, labels stay short, and no oversized headline interrupts the project sequence. That restraint gives very different image crops a consistent editorial rhythm.
+
+## Responsive behavior
+
+On narrow screens the archive becomes a single reading column. The header stays economical, touch targets remain reachable, and images retain enough height to act as project introductions rather than thumbnails. The crop changes with the viewport; the order and project identity do not.
+
+<Figure
+  src={deviceMockup}
+  alt="Static concept mockup of a black smartphone displaying five NPKN Studio projects as an image-led mobile archive"
+  caption="Responsive concept mockup showing the NPKN project archive as a single-column mobile sequence."
+  width="wide"
+/>
+
+<VideoPoster
+  href="https://strong-bavarois-ba61f6.netlify.app/work/plvs%20vltra"
+  src={plvsLetterhead}
+  alt="PLVS VLTRA letterhead mockup used as a linked poster for the project case study"
+  title="visit the PLVS VLTRA case study ↗︎"
+  caption="The linked build preserves the same project-first hierarchy across desktop and mobile."
+  label="Visit the PLVS VLTRA case study on the NPKN Studio website"
+  newTab={true}
+/>
+
+## Outcome
+
+The study resolves into a durable portfolio system: a small navigational frame, a flexible image grid, and project captions that remain available to pointer and keyboard users. It gives the visible work enough room to establish its own tone while the website retains a consistent structure.
+
+No performance uplift, client result, or authorship of the underlying studio projects is implied. The output documented here is the website study and its responsive front-end behavior.
+
+<Notes title="Project notes">
+  NPKN Studio and the five project titles and images shown here come from the public studio website used as the source for this implementation study. This case study describes the web presentation only; it does not claim Tony created the studio’s underlying identity projects.
+</Notes>

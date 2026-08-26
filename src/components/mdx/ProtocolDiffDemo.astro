@@ -1,0 +1,21 @@
+---
+import type { ImageMetadata } from "astro";
+
+import ProtocolDiff from "../islands/ProtocolDiff";
+import type { ProtocolVariantId } from "../../lib/lineage-model";
+
+export interface Props {
+  initialVariant: ProtocolVariantId;
+  fallbackSrc: ImageMetadata;
+  caption: string;
+}
+
+const { initialVariant, fallbackSrc, caption } = Astro.props;
+---
+
+<ProtocolDiff
+  client:visible={{ rootMargin: "200px" }}
+  {initialVariant}
+  {fallbackSrc}
+  {caption}
+/>

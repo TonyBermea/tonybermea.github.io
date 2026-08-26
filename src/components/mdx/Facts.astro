@@ -1,0 +1,27 @@
+---
+interface FactItem {
+  readonly term: string;
+  readonly detail: string;
+}
+
+interface Props {
+  items: readonly FactItem[];
+  label?: string;
+}
+
+const {
+  items,
+  label = 'Project facts',
+} = Astro.props;
+---
+
+<section class="facts" aria-label={label}>
+  <dl class="facts__list">
+    {items.map((item) => (
+      <div class="facts__item">
+        <dt>{item.term}</dt>
+        <dd>{item.detail}</dd>
+      </div>
+    ))}
+  </dl>
+</section>

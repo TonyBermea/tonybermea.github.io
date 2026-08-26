@@ -1,0 +1,19 @@
+---
+interface Props {
+  title?: string;
+  id?: string;
+}
+
+const {
+  title = 'Notes',
+  id = 'project-notes',
+} = Astro.props;
+const headingId = `${id}-heading`;
+---
+
+<aside class="notes" id={id} aria-labelledby={headingId}>
+  <h2 class="notes__heading" id={headingId}>{title}</h2>
+  <div class="notes__content">
+    <slot />
+  </div>
+</aside>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteIdentity } from "../data/site";
+
+Astro.response.status = 404;
+const homeHref = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title={`Page not found — ${siteIdentity.name}`}
+  description="The requested portfolio page was not found."
+  pageType="home"
+>
+  <main id="main-content" class="home-shell">
+    <h1>page not found</h1>
+    <p>The requested page is not part of this portfolio.</p>
+    <p><a href={homeHref}>← back to {siteIdentity.displayName}</a></p>
+  </main>
+</BaseLayout>

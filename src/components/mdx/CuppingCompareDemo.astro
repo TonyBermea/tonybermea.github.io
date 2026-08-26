@@ -1,0 +1,23 @@
+---
+import type { ImageMetadata } from "astro";
+
+import CuppingCompare from "../islands/CuppingCompare";
+import type { CuppingLotId, CuppingMode } from "../../lib/coffee-cupping-model";
+
+export interface Props {
+  initialMode: CuppingMode;
+  initialLot: CuppingLotId;
+  fallbackSrc: ImageMetadata;
+  caption: string;
+}
+
+const { initialMode, initialLot, fallbackSrc, caption } = Astro.props;
+---
+
+<CuppingCompare
+  client:visible={{ rootMargin: "200px" }}
+  {initialMode}
+  {initialLot}
+  {fallbackSrc}
+  {caption}
+/>

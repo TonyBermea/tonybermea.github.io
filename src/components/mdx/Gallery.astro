@@ -1,0 +1,57 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+type MediaWidth = 'compact' | 'prose' | 'wide';
+type GalleryLayout = 'grid' | 'lead';
+
+interface GalleryItem {
+  readonly src: ImageMetadata;
+  readonly alt: string;
+  readonly caption?: string;
+}
+
+interface Props {
+  items: readonly GalleryItem[];
+  columns?: 2 | 3;
+  width?: MediaWidth;
+  label?: string;
+  layout?: GalleryLayout;
+}
+
+const {
+  items,
+  columns = 2,
+  width = 'wide',
+  label = 'Project image gallery',
+  layout = 'grid',
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'mdx-gallery',
+    `mdx-gallery--${width}`,
+    `mdx-gallery--${columns}-columns`,
+    `mdx-gallery--${layout}`,
+  ]}
+  aria-label={label}
+>
+  <ul class="mdx-gallery__list">
+    {items.map((item) => (
+      <li class="mdx-gallery__item">
+        <figure>
+          <Image
+            src={item.src}
+            alt={item.alt}
+            width={item.src.width}
+            height={item.src.height}
+            loading="lazy"
+            decoding="async"
+          />
+          {item.caption && <figcaption>{item.caption}</figcaption>}
+        </figure>
+      </li>
+    ))}
+  </ul>
+</section>

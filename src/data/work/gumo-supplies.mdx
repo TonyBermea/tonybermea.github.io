@@ -1,0 +1,115 @@
+---
+title: Gumo Supplies
+period: "2026"
+projectType: private Shopify storefront implementation
+deck: A commerce system for organizing a broad stationery catalogue without losing the quiet, tactile character of the products themselves.
+cardDescription: A Shopify storefront for organizing Japanese stationery through clear collections, variant-aware product pages, and a short path to cart.
+seoDescription: Gumo Supplies is Tony Bermea's private 2026 Shopify storefront study for a Japanese stationery catalogue, product variants, and checkout handoff.
+accent: green
+hero: ../../assets/gumo-supplies/gumo-hero.png
+heroAlt: Overhead arrangement of an unbranded cloth notebook, writing tools, washi tapes, ruler, and paper clips on warm paper.
+heroCaption: Original stationery still life created for this case study; the private storefront is represented with reconstructed catalogue data and interface views.
+socialImage: ../../assets/gumo-supplies/gumo-hero.png
+draft: false
+---
+
+import notebook from "../../assets/gumo-supplies/notebook.png";
+import writingTools from "../../assets/gumo-supplies/writing-tools.png";
+import deskAccessories from "../../assets/gumo-supplies/desk-accessories.png";
+
+export const products = [
+  {
+    id: "cloth-notebook",
+    title: "Cloth notebook",
+    category: "Paper / A5",
+    price: "¥2,750",
+    image: notebook,
+    alt: "Unbranded charcoal clothbound notebook photographed on warm textured paper",
+  },
+  {
+    id: "writing-set",
+    title: "Writing set",
+    category: "Writing / 0.5 mm",
+    price: "¥1,650",
+    image: writingTools,
+    alt: "Three unbranded muted writing tools with brushed metal details on warm textured paper",
+  },
+  {
+    id: "desk-set",
+    title: "Desk set",
+    category: "Desk / paper tools",
+    price: "¥2,200",
+    image: deskAccessories,
+    alt: "Muted washi tapes, brass paper clips, and a brushed metal ruler on warm textured paper",
+  },
+];
+
+## A catalogue is an information problem
+
+The private build began with a familiar commerce tension: a stationery shop may feel visually simple while its catalogue is not. Paper sizes, ruling, colours, nib widths, refills, materials, makers, and stock states all need a stable structure before the storefront can feel calm.
+
+The design organizes those variables into a short path from collection to product to cart. Photography carries the tactile impression; taxonomy, availability, and consistent product data do the quieter work of helping a shopper decide.
+
+<Facts
+  items={[
+    { term: "Platform", detail: "Shopify Online Store 2.0" },
+    { term: "Theme layer", detail: "Liquid, JSON templates, sections, and blocks" },
+    { term: "Catalogue", detail: "Collections, variants, metafields, and availability" },
+    { term: "Delivery", detail: "Responsive media, accessible forms, and checkout handoff" },
+  ]}
+/>
+
+## Collection structure before decoration
+
+Collections separate paper, writing tools, desk objects, and replenishment items, while storefront filters expose attributes that change a buying decision. Product type, availability, colour, and size are modelled as data instead of being buried in descriptions.
+
+<FullBleed tone="accent" label="Reconstructed Gumo Supplies collection view">
+  <CommerceMockup
+    view="collection"
+    products={products}
+    selectedId="cloth-notebook"
+    caption="Reconstructed portfolio mockup using representative catalogue data; filters are shown as a static information-design state."
+  />
+</FullBleed>
+
+## A theme editors can keep using
+
+The implementation follows Shopify’s Online Store 2.0 architecture: Liquid renders the storefront, JSON templates choose the page structure, and reusable sections and blocks keep merchandising decisions available in the theme editor. Dynamic sources connect block settings to product and collection data rather than duplicating content inside a template.
+
+The system keeps responsibilities narrow. Templates establish the page type, sections define reusable merchandising modules, blocks provide reorderable content, and snippets handle small repeated patterns such as prices, badges, and product media.
+
+## Options, variants, and product truth
+
+A product page has to distinguish descriptive attributes from purchasable variants. Format and colour can resolve to a specific variant with its own availability, price, and media; care details and material notes can live in metafields without multiplying theme code.
+
+<CommerceMockup
+  view="product"
+  products={products}
+  selectedId="cloth-notebook"
+  caption="Reconstructed portfolio mockup with representative product, variant, metafield, price, and availability data."
+/>
+
+Quantity controls and cart forms are presented only when the selected variant can be purchased. The public case study does not reproduce the private shop’s products or operational data; it documents the system decisions behind a typical product state.
+
+## A short, legible handoff to checkout
+
+Cart state keeps product identity, selected option, quantity, and price visible before Shopify takes over the secure checkout flow. The page avoids inventing a second checkout model inside the theme and makes shipping uncertainty explicit before the handoff.
+
+<FullBleed tone="paper" label="Reconstructed Gumo Supplies cart view">
+  <CommerceMockup
+    view="cart"
+    products={products}
+    selectedId="cloth-notebook"
+    caption="Reconstructed portfolio mockup using representative cart lines and prices; checkout remains Shopify’s hosted flow."
+  />
+</FullBleed>
+
+## Responsive delivery and outcome
+
+Product media reserves its aspect ratio before loading, collection grids collapse without changing reading order, and option labels remain available to keyboard and screen-reader users. The visual layer stays deliberately restrained so product differences remain more prominent than interface chrome.
+
+The result is a reusable commerce foundation: catalogue structure can grow, merchants can rearrange approved modules, and the route from discovery to cart remains consistent. This is an implementation outcome, not a claim about conversion, revenue, or measured business performance.
+
+<Notes title="Private-build and source notes">
+  Gumo Supplies is presented as a private 2026 Shopify storefront implementation. The business identity, catalogue records, prices, and interface captures shown here are representative portfolio reconstructions; no ownership, client relationship, or measured commercial result is implied. Platform terminology follows Shopify’s current theme, section/block, product-template, variant, filtering, and cart architecture.
+</Notes>

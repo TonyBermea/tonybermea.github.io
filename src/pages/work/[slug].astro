@@ -1,0 +1,62 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import {
+  Facts,
+  Figure,
+  FullBleed,
+  Gallery,
+  CuppingCompareDemo,
+  CommerceMockup,
+  LayerMixerDemo,
+  Notes,
+  PatternScaleDemo,
+  ProtocolDiffDemo,
+  VideoPoster,
+} from "../../components/mdx";
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work", ({ data }) => !data.draft);
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const components = {
+  Figure,
+  Gallery,
+  FullBleed,
+  Facts,
+  VideoPoster,
+  Notes,
+  LayerMixerDemo,
+  PatternScaleDemo,
+  CuppingCompareDemo,
+  CommerceMockup,
+  ProtocolDiffDemo,
+};
+---
+
+<CaseStudyLayout
+  title={entry.data.title}
+  period={entry.data.period}
+  projectType={entry.data.projectType}
+  deck={entry.data.deck}
+  seoDescription={entry.data.seoDescription}
+  hero={entry.data.hero}
+  heroAlt={entry.data.heroAlt}
+  heroCaption={entry.data.heroCaption}
+  socialImage={entry.data.socialImage}
+  liveUrl={entry.data.liveUrl}
+  liveLabel={entry.data.liveLabel}
+>
+  <Content components={components} />
+</CaseStudyLayout>

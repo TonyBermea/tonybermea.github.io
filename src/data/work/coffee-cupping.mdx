@@ -1,0 +1,75 @@
+---
+title: Coffee Cupping
+period: "2026"
+projectType: interactive product case study
+deck: A linked comparison workspace for reading five coffees as individual profiles, as a room, and against their price.
+cardDescription: A hand-built comparison dashboard for moving between absolute scores, room-normalized differences, and price-versus-quality context.
+seoDescription: Coffee Cupping is Tony Bermea's interactive web product study for comparing five source lots through linked sensory views.
+accent: yellow
+hero: ../../assets/coffee-cupping/coffee-cupping-hero.png
+heroAlt: Coffee Cupping dashboard showing five coffee lots across a sensory score matrix, profile chart, and value scatter plot.
+heroCaption: The absolute-score workspace keeps the matrix, profiles, and price-versus-quality view linked to one selected lot.
+socialImage: ../../assets/coffee-cupping/coffee-cupping-hero.png
+liveUrl: https://coffeecupping.netlify.app/
+draft: false
+---
+
+import normalizedView from "../../assets/coffee-cupping/coffee-normalized.png";
+import compareFallback from "../../assets/coffee-cupping/cupping-compare-fallback.png";
+
+## A comparison brief, not a scoreboard
+
+Cupping notes are usually read one coffee at a time. The useful decisions, however, happen across a table: which lot has the clearest acidity, which one stays balanced, and whether a higher score still makes sense once price enters the frame. Coffee Cupping reorganizes that discussion into one linked browser workspace.
+
+The interface uses five representative source lots and six sensory metrics. It keeps the original score visible, but avoids declaring a universal “best” coffee. Selection is a reading aid: choose a lot once and the matrix, profile, and value point follow together.
+
+<Facts
+  items={[
+    { term: "Build", detail: "React 18, Vite, and Motion" },
+    { term: "Visualization", detail: "Hand-built SVG in the live product; no chart dependency" },
+    { term: "Preferences", detail: "Light and dark themes, no-flash setup, and reduced-motion support" },
+    { term: "Delivery", detail: "92 KB gzipped production bundle" },
+  ]}
+/>
+
+## One matrix, three linked views
+
+The matrix is the product’s stable spine. Rows hold the sensory vocabulary and columns hold the lots, so a reader can scan either dimension without changing context. The surrounding profile and scatter views answer different questions while sharing the same selection.
+
+Absolute mode is for reading what the cupping sheet recorded. Delta mode subtracts the room average for each metric, leveling the columns around a common zero line. This makes a coffee’s relative shape easier to see without replacing its source score.
+
+<Figure
+  src={normalizedView}
+  alt="Coffee Cupping normalized dashboard with each lot shown as a delta from the room average"
+  caption="The normalized state recenters every metric around the five-lot room average; it does not alter the underlying cupping scores."
+  width="wide"
+/>
+
+## Leveling against the room
+
+The focused prototype below keeps the full matrix accessible as a table. Absolute and Delta are real mode buttons, and each lot header is a keyboard-accessible selection control. Selecting a column also identifies the corresponding point in the price-versus-quality plot.
+
+<FullBleed tone="accent">
+  <CuppingCompareDemo
+    initialMode="absolute"
+    initialLot="el-paraiso"
+    fallbackSrc={compareFallback}
+    caption="Switch score modes, then select any lot to trace it through the comparison matrix and value plot."
+  />
+</FullBleed>
+
+## Price and quality in the same frame
+
+Sensory score and green-coffee price describe different things. Placing them together makes that tradeoff inspectable without collapsing it into a recommendation. A lower-cost lot can be read for reliability and body; a higher-scoring lot can be evaluated against the premium it asks the buyer to carry.
+
+The view deliberately stops short of purchasing guidance. Freight, contract size, availability, roast development, and the needs of a particular menu all sit outside this sample dataset.
+
+## Outcome
+
+The completed study turns a dense cupping table into a compact comparison sequence: establish the source score, normalize against the room, then inspect quality alongside price. The linked selection keeps those steps coherent instead of asking the reader to reconcile separate charts by eye.
+
+It is a working front-end product study rather than a measured business result. Its strongest output is the interaction model—one selection, multiple readings, and no hidden change to the underlying numbers.
+
+<Notes title="Data and implementation notes">
+  The five lots, values, prices, origins, and processes are representative sample data used by the public prototype. Scores use familiar SCA-style cupping categories, but this portfolio study is not a sourcing recommendation or a record of a commercial purchase.
+</Notes>

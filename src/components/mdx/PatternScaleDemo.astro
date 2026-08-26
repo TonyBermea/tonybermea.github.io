@@ -1,0 +1,22 @@
+---
+import type { ImageMetadata } from "astro";
+
+import PatternScale from "../islands/PatternScale";
+
+export interface Props {
+  seed: number;
+  scales: readonly [1, 2, 4, 8];
+  fallbackSrc: ImageMetadata;
+  caption: string;
+}
+
+const { seed, scales, fallbackSrc, caption } = Astro.props;
+---
+
+<PatternScale
+  client:visible={{ rootMargin: "200px" }}
+  {seed}
+  {scales}
+  {fallbackSrc}
+  {caption}
+/>

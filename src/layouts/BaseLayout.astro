@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  pageType?: "home" | "case";
+  socialImage?: string;
+}
+
+const {
+  title,
+  description,
+  pageType = "home",
+  socialImage,
+} = Astro.props;
+
+const basePath = import.meta.env.BASE_URL;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImageUrl = socialImage
+  ? new URL(socialImage, Astro.site ?? Astro.url.origin).toString()
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={pageType === "home" ? "#f7f7f7" : "#f2f2f2"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    <link rel="stylesheet" href={`${basePath}fonts/fonts.css`} />
+    {pageType === "home" && (
+      <>
+        <link
+          rel="preload"
+          href={`${basePath}fonts/JetBrainsMono-Light.woff2`}
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href={`${basePath}fonts/JetBrainsMono-Regular.woff2`}
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      </>
+    )}
+    <title>{title}</title>
+  </head>
+  <body class:list={[`${pageType}-page`]}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import studioHero from "../assets/studio/alex-rowan-studio.jpg";
+import { selectedWork } from "../data/selected-work";
+import { siteIdentity } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ACCENT_COLORS, resolveSelectedWork } from "../lib/work";
+
+const collection = await getCollection("work");
+const work = resolveSelectedWork(selectedWork, collection);
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout
+  title={siteIdentity.title}
+  description={siteIdentity.description}
+  pageType="home"
+  socialImage={studioHero.src}
+>
+  <main id="main-content" class="home-shell">
+    <header>
+      <h1>{siteIdentity.displayName}</h1>
+      <p class="home-intro">{siteIdentity.biography}</p>
+    </header>
+
+    <figure class="home-hero">
+      <div class="home-hero__frame">
+        <Picture
+          src={studioHero}
+          alt="A designer working at a studio table covered with maps and research materials beside a laptop."
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 864px) calc(100vw - 64px), 800px"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpg"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption>Studio work in progress — maps, field notes, and an evolving digital prototype.</figcaption>
+    </figure>
+
+    <section class="home-section" aria-labelledby="selected-work-heading">
+      <h2 id="selected-work-heading">selected work</h2>
+      <ul class="work-list">
+        {work.map((item) => (
+          <li style={`--work-accent: ${ACCENT_COLORS[item.accent]}`}>
+            <a
+              href={item.kind === "case-study" ? `${basePath}${item.href}` : item.href}
+              target={item.newTab ? "_blank" : undefined}
+              rel={item.newTab ? "noreferrer" : undefined}
+            >
+              {item.title}{item.period ? ` (${item.period}${item.kind === "external" && item.status ? ` · ${item.status}` : ""})` : ""}
+            </a>{", "}
+            {item.description}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="home-section" aria-labelledby="links-heading">
+      <h2 id="links-heading">links</h2>
+      <p class="home-links">
+        {siteIdentity.links.map((link, index) => (
+          <>
+            {index > 0 && " / "}
+            <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+          </>
+        ))}
+      </p>
+    </section>
+
+    <section class="home-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">contact</h2>
+      <p>
+        For product, web, and consulting work, write to{" "}
+        <a href={`mailto:${siteIdentity.email}`}>{siteIdentity.email}</a>.
+      </p>
+    </section>
+
+    <p class="sample-note">
+      + Built across product strategy, interface design, web engineering, and cloud delivery.
+    </p>
+  </main>
+</BaseLayout>
