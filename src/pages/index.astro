@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
-import studioHero from "../assets/home/studio-work.jpg";
+import lightningField from "../assets/home/the-lightning-field.jpg";
 import { selectedWork } from "../data/selected-work";
 import { siteIdentity } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -16,7 +16,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
   title={siteIdentity.title}
   description={siteIdentity.description}
   pageType="home"
-  socialImage={studioHero.src}
+  socialImage={lightningField.src}
 >
   <main id="main-content" class="home-shell">
     <header>
@@ -27,8 +27,8 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
     <figure class="home-hero">
       <div class="home-hero__frame">
         <Picture
-          src={studioHero}
-          alt="A designer working at a studio table covered with maps and research materials beside a laptop."
+          src={lightningField}
+          alt="Lightning strikes over Walter De Maria’s field of stainless steel poles beneath a dark storm sky in western New Mexico."
           widths={[480, 800, 1200]}
           sizes="(max-width: 864px) calc(100vw - 64px), 800px"
           formats={["avif", "webp"]}
@@ -37,7 +37,9 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
           fetchpriority="high"
         />
       </div>
-      <figcaption>Studio work in progress.</figcaption>
+      <figcaption>
+        Walter De Maria, <cite>The Lightning Field</cite>, 1977. Long-term installation, western New Mexico. © Estate of Walter De Maria. Photo: John Cliett, courtesy Dia Art Foundation, New York.
+      </figcaption>
     </figure>
 
     <section class="home-section" aria-labelledby="selected-work-heading">

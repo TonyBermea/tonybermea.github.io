@@ -14,7 +14,7 @@ The main routes are `/`, `/work/field-index/`, `/work/coffee-cupping/`, `/work/g
 
 ## Content and structure
 
-- `src/pages/index.astro` — fully static homepage with a responsive studio photograph
+- `src/pages/index.astro` — fully static homepage with a responsive artwork photograph and full credit line
 - `src/data/site.ts` — typed identity, biography, contact, and social links
 - `src/data/work/` — eight schema-validated MDX case studies
 - `src/content.config.ts` — work collection schema
@@ -27,7 +27,7 @@ To add a case study, create an MDX entry in `src/data/work/` with complete front
 
 ## Asset provenance
 
-All production media is stored locally; nothing is hotlinked at runtime. The homepage uses the restored studio photograph with responsive Astro image output. Soul Mag and Pixel Vault use localized source-build captures plus clearly labeled portfolio reconstructions. Gumo Supplies uses original, logo-free stationery photography and reconstructed storefront views with representative catalogue data. Field Index uses sample records and prototype imagery disclosed in the case study. Interactive modules include local static fallbacks. JetBrains Mono WOFF2 files and `OFL-JetBrainsMono.txt` are self-hosted under the SIL Open Font License.
+All production media is stored locally; nothing is hotlinked at runtime. The homepage uses the supplied photograph of Walter De Maria’s *The Lightning Field* with responsive Astro image output and the complete artwork and photography credit. Soul Mag and Pixel Vault use localized source-build captures plus clearly labeled portfolio reconstructions. Gumo Supplies uses original, logo-free stationery photography and reconstructed storefront views with representative catalogue data. Field Index uses sample records and prototype imagery disclosed in the case study. Interactive modules include local static fallbacks. JetBrains Mono WOFF2 files and `OFL-JetBrainsMono.txt` are self-hosted under the SIL Open Font License.
 
 Selected work contains eight internal studies. Soul Mag retains one link to its interactive concept, while Pixel Vault is visibly labeled decommissioned and retains one link to its preserved snapshot. Field Index discloses that its preview records are sample data, and Lineage uses entirely synthetic clinical content and is not medical software.
 

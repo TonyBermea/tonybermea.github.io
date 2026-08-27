@@ -86,7 +86,7 @@ test.describe("static portfolio", () => {
     await expect(page.locator(".work-list")).toHaveRole("list");
     await expect(page.locator(".work-list > li")).toHaveCount(8);
     await expect(page.locator("script")).toHaveCount(0);
-    await expect(page.getByAltText(/designer working at a studio table/i)).toBeVisible();
+    await expect(page.getByAltText(/lightning strikes over Walter De Maria’s field/i)).toBeVisible();
 
     for (const [name, route] of [
       ["Field Index", "/work/field-index/"],
